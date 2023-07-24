@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCharacterController : CharacterStateMachine, IAttacker
+public class PlayerCharacterController : CharacterStateController, IAttacker
 {
     public bool IsInputBlockedExternally = false;
     public bool IsDead = false;
@@ -11,8 +11,10 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
     public int AttackDamage;
     public int MaxHealth;
 
-    AttackState _attackState;
-    RecoveryState _recoveryState;
+    CharacterStateController _stateMachine;
+
+    [SerializeField] AttackState _attackState;
+    [SerializeField] RecoveryState _recoveryState;
     //State _currentState;
 
     CharacterController _characterController;
@@ -32,7 +34,7 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
     void Update()
     {
         ProcessInput();
-        StateMachineUpdate();        
+        
     }
 
     void OnMove(InputValue movementValue)
@@ -82,8 +84,13 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
         _hitboxPivot = GameObject.Find("PlayerHitboxPivot");
         _hitbox = _hitboxPivot.GetComponentInChildren<Hitbox>();
         _hitbox.gameObject.SetActive(false);
+
+
+        _attackState = new AttackState(_hitbox, .1f);
+        print(_attackState);
+
         _recoveryState = new RecoveryState(AttackSpeed);
-        _attackState = new AttackState(_hitbox, .1f, _recoveryState);
+        print(_recoveryState);
     }
 
     public void AttackRecovery(bool hasAttackHit)

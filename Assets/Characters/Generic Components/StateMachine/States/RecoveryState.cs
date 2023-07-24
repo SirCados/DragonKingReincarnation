@@ -3,7 +3,7 @@ using UnityEngine;
 public class RecoveryState : State
 {
     float _attackRecoveryDuration;
-    float _attackRecoveryStart;
+    float _attackRecoveryEnd;
 
     public RecoveryState(float attackRecoveryDuration)
     {
@@ -12,13 +12,12 @@ public class RecoveryState : State
 
     public override void OnEnterState()
     {
-        print("Enter Recovery");
-        _attackRecoveryStart = Time.time;
+        _attackRecoveryEnd = Time.time + _attackRecoveryDuration;
     }
 
     public override void OnUpdate()
     {
-        if(Time.time - _attackRecoveryStart > _attackRecoveryDuration)
+        if(Time.time > _attackRecoveryDuration)
         {
             ShouldStateChange = true;
         }
