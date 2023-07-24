@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHurtbox : MonoBehaviour, IDamageable
+public class EnemyHurtbox : MonoBehaviour, IHurtbox
 {    
     public bool IsDead { get; set;}
 
@@ -17,18 +17,6 @@ public class EnemyHurtbox : MonoBehaviour, IDamageable
         CheckIfDead();
     }
 
-    public void TakeDamage(int damageToTake)
-    {
-        _character.CurrentHealth -= damageToTake;
-        print("ow!");
-
-        if (_character.CurrentHealth <= 0)
-        {
-            _character.CurrentHealth = 0;
-            IsDead = true;
-        }
-    }
-
     public void CheckIfDead()
     {
         if (IsDead)
@@ -41,5 +29,17 @@ public class EnemyHurtbox : MonoBehaviour, IDamageable
     {
         IsDead = false;
         _character = GetComponentInParent<EnemyCharacter>();
+    }
+
+    public void TakeHurt(int damageToTake)
+    {
+        _character.CurrentHealth -= damageToTake;
+        print("ow!");
+
+        if (_character.CurrentHealth <= 0)
+        {
+            _character.CurrentHealth = 0;
+            IsDead = true;
+        }
     }
 }

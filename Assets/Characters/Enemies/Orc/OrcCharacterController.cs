@@ -18,7 +18,7 @@ public class OrcCharacterController : MonoBehaviour, IAttacker, IHurtbox
     float _attackRecoveryTime;
     int _currentHealth; 
 
-    public void BeginAttack()
+    public void OnFire()
     {        
         _hitbox.gameObject.SetActive(true);
     }
@@ -74,6 +74,11 @@ public class OrcCharacterController : MonoBehaviour, IAttacker, IHurtbox
     }
 
     public int GetAttackDamage()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void BeginAttack()
     {
         throw new System.NotImplementedException();
     }

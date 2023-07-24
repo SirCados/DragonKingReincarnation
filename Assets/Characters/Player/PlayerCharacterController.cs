@@ -11,19 +11,19 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
     public int AttackDamage;
     public int MaxHealth;
 
-    [SerializeField] CharacterController _characterController;
-    [SerializeField] PlayerHitbox _hitbox;
-    [SerializeField] GameObject _hitboxPivot;
+    AttackState _attackState;
+    RecoveryState _recoveryState;
+    //State _currentState;
 
-    //AttackState _attackState = new AttackState(_hitbox);
+    CharacterController _characterController;
+    Hitbox _hitbox;
+    GameObject _hitboxPivot;
 
     bool _isInputBlockedInternally = false;
     Vector2 _movementVector;
     Vector2 _storedMovementVector;
 
-    float _movementSpeed = 20.0f;
-
-    private void Awake()
+    private void Start()
     {
         SetupPlayerCharacterController();
     }
@@ -32,6 +32,7 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
     void Update()
     {
         ProcessInput();
+        StateMachineUpdate();        
     }
 
     void OnMove(InputValue movementValue)
@@ -55,7 +56,7 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
     void MovePlayer()
     {
         Vector3 movement = new Vector3(_movementVector.x, _movementVector.y, 0);
-        _characterController.Move(movement * _movementSpeed * Time.deltaTime);
+        _characterController.Move(movement * MovementSpeed * Time.deltaTime);
     }
 
     void OnFire()
@@ -66,9 +67,9 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
 
     public void BeginAttack()
     {
-        //ChangeState();
+        ChangeState(_attackState, _recoveryState);
     }
-   
+
 
     public void SpawnProjectile(GameObject projectileToSpawn)
     {
@@ -79,8 +80,10 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
     {
         _characterController = GetComponent<CharacterController>();
         _hitboxPivot = GameObject.Find("PlayerHitboxPivot");
-        _hitbox = _hitboxPivot.GetComponentInChildren<PlayerHitbox>();
+        _hitbox = _hitboxPivot.GetComponentInChildren<Hitbox>();
         _hitbox.gameObject.SetActive(false);
+        _recoveryState = new RecoveryState(AttackSpeed);
+        _attackState = new AttackState(_hitbox, .1f, _recoveryState);
     }
 
     public void AttackRecovery(bool hasAttackHit)
@@ -91,5 +94,13 @@ public class PlayerCharacterController : CharacterStateMachine, IAttacker
     public int GetAttackDamage()
     {
         return AttackDamage;
+    }
+
+    void AttackUpdate()
+    {
+        if (_hitbox.HasAttackHit)
+        {
+            
+        }
     }
 }

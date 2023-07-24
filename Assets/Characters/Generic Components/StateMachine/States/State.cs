@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class State
+public abstract class State: MonoBehaviour
 {
+    public bool ShouldStateChange = false;
+
     public virtual void OnEnterState() { }
 
     public virtual void OnExitState() { }

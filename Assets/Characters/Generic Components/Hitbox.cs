@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hitbox : MonoBehaviour
@@ -7,7 +5,7 @@ public class Hitbox : MonoBehaviour
     public IAttacker _attacker;
 
     string _target;
-    bool _hasAttackHit = false;  
+    public bool HasAttackHit = false;  
 
     private void Awake()
     {
@@ -16,21 +14,21 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GiveHitTo(collision, _target);
+        GiveHitTo(collision);
     }
 
     private void OnDisable()
     {
-        _hasAttackHit = false;
+        HasAttackHit = false;
     }
 
-    public void GiveHitTo(Collider2D hurtbox, string tag)
+    public void GiveHitTo(Collider2D hurtbox)
     {
-        if (hurtbox.CompareTag(tag) && !_hasAttackHit)
+        if (hurtbox.CompareTag(_target) && !HasAttackHit)
         {
             IHurtbox hurtboxToHit = hurtbox.GetComponent<IHurtbox>();
             hurtboxToHit.TakeHurt(_attacker.GetAttackDamage());
-            _hasAttackHit = true;
+            HasAttackHit = true;
         }
     }
     
@@ -50,6 +48,5 @@ public class Hitbox : MonoBehaviour
     {
         DetermineTargetType();
         _attacker = GetComponentInParent<IAttacker>();
-        print(_attacker);
     }
 }

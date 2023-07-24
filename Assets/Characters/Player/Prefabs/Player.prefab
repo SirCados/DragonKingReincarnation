@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4ee27ac6adb7f41ba108f893b1190f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetType: 1
 --- !u!212 &8678354413106599856
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -274,13 +273,10 @@ MonoBehaviour:
   IsInputBlockedExternally: 0
   IsDead: 0
   AttackSpeed: 0
-  MovementSpeed: 0
+  MovementSpeed: 20
   Armor: 0
-  AttackDamage: 0
+  AttackDamage: 5
   MaxHealth: 0
-  _characterController: {fileID: 0}
-  _hitbox: {fileID: 0}
-  _hitboxPivot: {fileID: 0}
 --- !u!143 &3990854179040859026
 CharacterController:
   m_ObjectHideFlags: 0
