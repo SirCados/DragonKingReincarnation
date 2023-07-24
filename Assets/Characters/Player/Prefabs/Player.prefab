@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4ee27ac6adb7f41ba108f893b1190f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasAttackHit: 0
 --- !u!212 &8678354413106599856
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -256,7 +257,7 @@ Transform:
   - {fileID: 5384581496667648835}
   - {fileID: 5085271349343772870}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1488953148127975142
 MonoBehaviour:
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsInputBlockedExternally: 0
   IsDead: 0
-  AttackSpeed: 0
+  AttackSpeed: 1
   MovementSpeed: 20
   Armor: 0
   AttackDamage: 5

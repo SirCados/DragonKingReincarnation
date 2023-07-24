@@ -7,12 +7,6 @@ public class CharacterStateController : MonoBehaviour
     protected State _currentState;
     protected State _nextState;
 
-    private void LateUpdate()
-    {
-        //print("current state " + _currentState);
-        StateControllerUpdate();
-    }
-
     public void StateControllerUpdate()
     {        
         if (_currentState != null)
@@ -21,7 +15,6 @@ public class CharacterStateController : MonoBehaviour
 
             if (_nextState != null && _currentState.ShouldStateChange)
             {
-
                 ChangeState(_nextState);
             }
         }

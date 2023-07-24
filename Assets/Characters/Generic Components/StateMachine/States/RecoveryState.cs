@@ -17,7 +17,7 @@ public class RecoveryState : State
 
     public override void OnUpdate()
     {
-        if(Time.time > _attackRecoveryDuration)
+        if(Time.time > _attackRecoveryEnd)
         {
             ShouldStateChange = true;
         }
