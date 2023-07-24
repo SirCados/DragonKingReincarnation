@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class EnemyHurtbox : MonoBehaviour, IHurtbox
-{    
-    public bool IsDead { get; set;}
+{
+    public bool IsDead;
 
     [SerializeField] EnemyCharacter _character;
     [SerializeField] GameObject _corpseSprite;
@@ -19,7 +19,7 @@ public class EnemyHurtbox : MonoBehaviour, IHurtbox
 
     public void CheckIfDead()
     {
-        if (IsDead)
+        if (IsDead && _corpseSprite != null)
         {
             _corpseSprite.SetActive(true);
         }

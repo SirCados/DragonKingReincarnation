@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCharacterController : CharacterStateController, IAttacker, IHurtbox
+public class PlayerCharacterController : CharacterStateController, IAttacker
 {
     public bool IsInputBlockedExternally = false;
     public bool IsDead = false;
@@ -14,7 +14,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
     int _currentHealth;
 
     AttackState _attackState;
-    RecoveryState _recoveryState;
+    RecoveryState _attackRecoveryState;
     IdleState _idleState;
     PlayerMoveState _moveState;
     HurtState _hurtState;
@@ -44,7 +44,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         _hitbox.gameObject.SetActive(false);
 
         _attackState = new AttackState(_hitbox, .1f);
-        _recoveryState = new RecoveryState(AttackSpeed);
+        _attackRecoveryState = new RecoveryState(AttackSpeed);
         _moveState = new PlayerMoveState();
         _idleState = new IdleState();
         _hurtState = new HurtState();
@@ -105,12 +105,12 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         BeginAttack();
     }
 
-    //-- IAttacker functions --//
+//-- IAttacker functions --//
     public void BeginAttack()
     {
         if (_currentState == _moveState || _currentState == _idleState)
         {
-            ChangeState(_attackState, _recoveryState);
+            ChangeState(_attackState, _attackRecoveryState);
         }
     }
 
@@ -124,21 +124,4 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         return AttackDamage;
     }
  //-- IAttacker functions --//
-
- //-- IHurtbox function --//
-    public void TakeHurt(int damageToTake)
-    {
-        if (!IsDead)
-        {
-            _currentHealth -= damageToTake;
-            print("ow!");
-
-            if (_currentHealth <= 0)
-            {
-                _currentHealth = 0;
-                IsDead = true;
-            }
-        }
-    }
-//-- IHurtbox function --//        
 }

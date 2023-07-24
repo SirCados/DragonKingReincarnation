@@ -1,83 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class OrcCharacterController : MonoBehaviour, IAttacker, IHurtbox
+public class OrcCharacterController : CharacterStateController, IAttacker
 {
-    public bool IsDead;
-    public float AttackSpeed;
-    public float MovementSpeed;
-    public int Armor;
-    public int AttackDamage;    
-    public int MaxHealth;
+    public bool IsDead = false;
 
-    [SerializeField] EnemyHitbox _hitbox;
+    CharacterAttributes _attributes;
+    CharacterController _characterController;
+    GameObject _hitboxPivot; //used to move hitbox so it faces correct direction
+    Hitbox _hitbox;
 
-    float _attackStartTime;
-    float _attackEndTime;
-    float _attackRecoveryTime;
-    int _currentHealth; 
+    //States
+    AttackState _attackState;
+    RecoveryState _attackRecoveryState;
+    IdleState _idleState;
+    ChaseState _moveState;
+    HurtState _hurtState;
 
-    public void OnFire()
-    {        
-        _hitbox.gameObject.SetActive(true);
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
-    public void AttackRecovery(bool hasAttackHit)
+    void SetupOrcCharacterController()
     {
-        if (hasAttackHit)
+        _attributes = GetComponent<CharacterAttributes>();
+        _characterController = GetComponent<CharacterController>();
+        _hitboxPivot = GameObject.Find("PlayerHitboxPivot");
+        _hitbox = _hitboxPivot.GetComponentInChildren<Hitbox>();
+        _attackState = new AttackState(_hitbox, _attributes.AttackSpeed);
+        _attackRecoveryState = new RecoveryState(_attributes.AttackSpeed);
+        _moveState = new ChaseState();
+        _hurtState = new HurtState();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    //-- IAttacker functions --//
+    public void BeginAttack()
+    {
+        if (_currentState == _moveState || _currentState == _idleState)
         {
-            _hitbox.ResetHitbox();
-            _hitbox.gameObject.SetActive(false);
+            ChangeState(_attackState, _attackRecoveryState);
         }
     }
 
     public void SpawnProjectile(GameObject projectileToSpawn)
     {
-       //No projectiles
-    }
-
-    public void TakeHurt(int damageToTake)
-    {
-        if (!IsDead)
-        {
-            _currentHealth -= damageToTake;
-            print("ow!");
-
-            if (_currentHealth <= 0)
-            {
-                _currentHealth = 0;
-                IsDead = true;
-            }
-        }
-    }
-
-    void CheckIfDead()
-    {
-        if (IsDead)
-        {
-            //be dead
-        }
-    }
-
-    void SetupOrcCharacterController()
-    {
-        if (MaxHealth <= 0)
-        {
-            MaxHealth = 1;
-        }
-        if (MaxHealth != 0)
-        {
-            _currentHealth = MaxHealth;
-        }
-        IsDead = false;
+        //No projectiles to spawn yet.
     }
 
     public int GetAttackDamage()
     {
-        throw new System.NotImplementedException();
+        return _attributes.AttackDamage;
     }
-
-    public void BeginAttack()
-    {
-        throw new System.NotImplementedException();
-    }
+    //-- IAttacker functions --//
 }
