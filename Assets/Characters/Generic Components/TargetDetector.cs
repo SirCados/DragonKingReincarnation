@@ -23,7 +23,6 @@ public class TargetDetector : MonoBehaviour
     {
         if (collision.CompareTag("PlayerHurtbox"))
         {
-            print("collision!");
             TargetPosition = collision.transform.position;
             IsDetecting = true;
         } 

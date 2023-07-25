@@ -581,17 +581,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3990854179040859026, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4017087962373546835, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3990854179040859026, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1535210854322104634, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1739370823}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
 --- !u!1 &1098133270
 GameObject:
@@ -788,46 +790,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1739370821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1535210854322104634, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
-  m_PrefabInstance: {fileID: 1069714160}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1739370823
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739370821}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
 --- !u!1 &1881225710
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +856,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5667565786815567709, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857893494385879064, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
+      propertyPath: m_Size.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857893494385879064, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
+      propertyPath: m_Size.y
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5857893494385879064, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
       propertyPath: m_Sprite

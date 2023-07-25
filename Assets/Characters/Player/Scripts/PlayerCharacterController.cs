@@ -1,25 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCharacterController : CharacterStateController, IAttacker
-{
-    public bool IsInputBlockedExternally = false;
-    public bool IsDead = false;
-    public float AttackSpeed;
-    public float MovementSpeed;
-    public int Armor;
-    public int AttackDamage;
-    public int MaxHealth;
-
-    int _currentHealth;
+public class PlayerCharacterController : CharacterStateController, IAttacker, IHurtbox
+{    
+    public bool IsDead = false;    
 
     AttackState _attackState;
+    CharacterAttributes _attributes;
     RecoveryState _attackRecoveryState;
     IdleState _idleState;
     PlayerMoveState _moveState;
     HurtState _hurtState;
 
-    CharacterController _characterController;
     Hitbox _hitbox;
     GameObject _hitboxPivot;
 
@@ -33,12 +25,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     }
     void SetupPlayerCharacterController()
     {
-        if (MaxHealth < 1)
-        {
-            MaxHealth = 1;
-        }
-        _currentHealth = MaxHealth;
-        _characterController = GetComponent<CharacterController>();
+        _attributes = GetComponent<CharacterAttributes>();
         _hitboxPivot = GameObject.Find("PlayerHitboxPivot");
         _hitbox = _hitboxPivot.GetComponentInChildren<Hitbox>();
         _hitbox.gameObject.SetActive(false);
@@ -46,7 +33,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         _moveState = new PlayerMoveState();
         _idleState = new IdleState();
         _hurtState = new HurtState();
-        _attackRecoveryState = new RecoveryState(AttackSpeed, _idleState);
+        _attackRecoveryState = new RecoveryState(_attributes.AttackSpeed, _idleState);
         _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
 
         ChangeState(_idleState);
@@ -94,8 +81,13 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         if (_movementVector != Vector2.zero)
         {
             ChangeState(_moveState);
-            Vector3 movement = new Vector3(_movementVector.x, _movementVector.y, 0);
-            _characterController.Move(movement * MovementSpeed * Time.deltaTime);
+
+            Vector3 directionVector = new Vector3(_movementVector.x, _movementVector.y, 0).normalized;
+            Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
+
+            transform.Translate(movement);
+
+            //_characterController.Move(movement * _attributes.MovementSpeed * Time.deltaTime);
         }
         else
         {
@@ -127,7 +119,12 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
 
     public int GetAttackDamage()
     {
-        return AttackDamage;
+        return _attributes.AttackDamage;
+    }
+
+    public void TakeHurt(int damageToTake)
+    {
+        print("ow!");
     }
     //-- IAttacker functions --//
 

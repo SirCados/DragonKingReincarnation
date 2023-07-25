@@ -29,7 +29,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 
     void SetupOrcCharacterController()
     {
-        //_animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _attributes = GetComponent<CharacterAttributes>();
         _characterController = GetComponent<CharacterController>();
         _pivot = GameObject.Find("Pivot");
@@ -95,10 +95,8 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
                 break;
         }
 
-        StateControllerUpdate();
-        
-    }
-    
+        StateControllerUpdate();        
+    }    
 
 //-- IAttacker functions --//
     public void BeginAttack()
@@ -126,6 +124,8 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         Vector3 movement = movementVector * _attributes.MovementSpeed * Time.deltaTime;
 
         RotatePivot(movementVector);
+        _animator.SetFloat("xDirection", movementVector.x);
+        _animator.SetFloat("yDirection", movementVector.y);
         print(movementVector);
         //_characterController.Move(movement);        
     }
