@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class IMobileEnemy : MonoBehaviour
+public interface IMobileEnemy
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void MoveToTarget(Vector3 targetPosition);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void LookForTarget(Vector3 lastPositionOfTarget);
+
+    public void RotatePivot(Vector3 movementVector);
+
+    public void BeIdle();
+
+    public void GoToSleep();
 }

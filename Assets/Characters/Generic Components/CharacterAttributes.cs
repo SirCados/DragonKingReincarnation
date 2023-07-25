@@ -1,4 +1,6 @@
-public class CharacterAttributes
+using UnityEngine;
+
+public class CharacterAttributes : MonoBehaviour
 {
     public float AttackSpeed;
     public float MovementSpeed;

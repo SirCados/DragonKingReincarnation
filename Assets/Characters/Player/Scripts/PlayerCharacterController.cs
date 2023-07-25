@@ -33,7 +33,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     }
     void SetupPlayerCharacterController()
     {
-        if(MaxHealth < 1)
+        if (MaxHealth < 1)
         {
             MaxHealth = 1;
         }
@@ -43,18 +43,20 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         _hitbox = _hitboxPivot.GetComponentInChildren<Hitbox>();
         _hitbox.gameObject.SetActive(false);
 
-        _attackState = new AttackState(_hitbox, .1f);
-        _attackRecoveryState = new RecoveryState(AttackSpeed);
         _moveState = new PlayerMoveState();
         _idleState = new IdleState();
         _hurtState = new HurtState();
+        _attackRecoveryState = new RecoveryState(AttackSpeed, _idleState);
+        _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
+
+        ChangeState(_idleState);
     }
 
     // Update is called once per frame
     void Update()
     {
         ProcessInput();
-        StateControllerUpdate();        
+        StateControllerUpdate();
     }
 
     //From Player Input component. Captures input from specific key bindings
@@ -75,18 +77,21 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
 
     void ProcessInput()
     {
-        MovePlayer();
+        if (_currentState != _attackState || _currentState == _attackRecoveryState)
+        {
+            MovePlayer();
+        }
     }
 
     void MovePlayer()
     {
-        if(_storedMovementVector != Vector2.zero)
+        if (_storedMovementVector != Vector2.zero)
         {
             _movementVector = _storedMovementVector;
             _storedMovementVector = Vector2.zero;
         }
 
-        if(_movementVector != Vector2.zero)
+        if (_movementVector != Vector2.zero)
         {
             ChangeState(_moveState);
             Vector3 movement = new Vector3(_movementVector.x, _movementVector.y, 0);
@@ -94,7 +99,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         }
         else
         {
-            _currentState = _idleState;
+            ChangeState(_idleState);
         }
     }
 
@@ -103,14 +108,15 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     void OnFire()
     {
         BeginAttack();
+
     }
 
-//-- IAttacker functions --//
+    //-- IAttacker functions --//
     public void BeginAttack()
     {
         if (_currentState == _moveState || _currentState == _idleState)
         {
-            ChangeState(_attackState, _attackRecoveryState);
+            ChangeState(_attackState);
         }
     }
 
@@ -123,5 +129,17 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     {
         return AttackDamage;
     }
- //-- IAttacker functions --//
+    //-- IAttacker functions --//
+
+    /*
+     follow mouse cursor?
+
+    Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
+     */
 }

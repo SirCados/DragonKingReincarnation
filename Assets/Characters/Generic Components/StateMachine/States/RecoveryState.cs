@@ -3,22 +3,25 @@ using UnityEngine;
 public class RecoveryState : State
 {
     float _attackRecoveryDuration;
-    float _attackRecoveryEnd;
+    float _passedTime = 0;
 
-    public RecoveryState(float attackRecoveryDuration)
+    public RecoveryState(float attackRecoveryDuration, IdleState idleState)
     {
         _attackRecoveryDuration = attackRecoveryDuration;
+        NextState = idleState;
     }
 
     public override void OnEnterState()
     {
-        _attackRecoveryEnd = Time.time + _attackRecoveryDuration;
+
     }
 
     public override void OnUpdate()
     {
-        if(Time.time > _attackRecoveryEnd)
+        _passedTime += Time.deltaTime;
+        if (_passedTime > _attackRecoveryDuration)
         {
+            Debug.Log("should be over");
             ShouldStateChange = true;
         }
     }

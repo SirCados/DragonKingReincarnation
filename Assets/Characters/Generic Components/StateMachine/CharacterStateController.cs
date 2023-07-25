@@ -5,7 +5,6 @@ using UnityEngine;
 public class CharacterStateController : MonoBehaviour
 {
     protected State _currentState;
-    protected State _nextState;
 
     public void StateControllerUpdate()
     {        
@@ -13,9 +12,10 @@ public class CharacterStateController : MonoBehaviour
         {            
             _currentState.OnUpdate();
 
-            if (_nextState != null && _currentState.ShouldStateChange)
-            {
-                ChangeState(_nextState);
+            if (_currentState.NextState != null && _currentState.ShouldStateChange)
+            {              
+                
+                ChangeState(_currentState.NextState);
             }
         }
     }
@@ -28,18 +28,7 @@ public class CharacterStateController : MonoBehaviour
         }
 
         _currentState = newState;
-        _currentState.OnEnterState();
-    }
-
-    public void ChangeState(State newState, State nextState)
-    {
-        if (_currentState != null)
-        {
-            _currentState.OnExitState();
-        }
-
-        _currentState = newState;
-        _nextState = nextState;
+        _currentState.ShouldStateChange = false;
         _currentState.OnEnterState();
     }
 }

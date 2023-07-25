@@ -3,26 +3,27 @@ using UnityEngine;
 public class AttackState : State
 {
     Hitbox _hitbox;
-    float _attackEnds;
     float _timeAttackIsActive;
+    float _passedTime = 0;
 
-    public AttackState(Hitbox hitbox, float timeAttackIsActive)
+
+    public AttackState(Hitbox hitbox, float timeAttackIsActive, RecoveryState recoveryState)
     {
         _hitbox = hitbox;
         _timeAttackIsActive = timeAttackIsActive;
+        NextState = recoveryState;
     }
 
     public override void OnEnterState()
     {
-
         _hitbox.gameObject.SetActive(true);
-        _attackEnds = Time.time + _timeAttackIsActive;
     }
 
     public override void OnUpdate()
     {
-        if (Time.time > _attackEnds)
-        {
+        _passedTime += Time.deltaTime;
+        if (_passedTime > _timeAttackIsActive)
+        {            
             ShouldStateChange = true;
         }
     }
@@ -31,5 +32,6 @@ public class AttackState : State
     {
         _hitbox.gameObject.SetActive(false);
         ShouldStateChange = false;
+        _passedTime = 0;
     }
 }

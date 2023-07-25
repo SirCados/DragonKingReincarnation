@@ -4,7 +4,7 @@ public class EnemyHurtbox : MonoBehaviour, IHurtbox
 {
     public bool IsDead;
 
-    [SerializeField] EnemyCharacter _character;
+    [SerializeField] CharacterAttributes _character;
     [SerializeField] GameObject _corpseSprite;
 
     private void Awake()
@@ -28,7 +28,7 @@ public class EnemyHurtbox : MonoBehaviour, IHurtbox
     void SetupEnemyHurtbox()
     {
         IsDead = false;
-        _character = GetComponentInParent<EnemyCharacter>();
+        _character = GetComponentInParent<CharacterAttributes>();
     }
 
     public void TakeHurt(int damageToTake)

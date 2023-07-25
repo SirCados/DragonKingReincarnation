@@ -3,7 +3,7 @@ using UnityEngine;
 public class TargetDetector : MonoBehaviour
 {
     public Vector3 TargetPosition = Vector3.zero;
-    public TargetType WillAttack = TargetType.ENEMY;
+    public TargetType WillAttack = TargetType.PLAYER;
     public bool IsDetecting;
 
     string _tagToLookFor;
@@ -21,8 +21,9 @@ public class TargetDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(_tagToLookFor))
+        if (collision.CompareTag("PlayerHurtbox"))
         {
+            print("collision!");
             TargetPosition = collision.transform.position;
             IsDetecting = true;
         } 
@@ -30,7 +31,7 @@ public class TargetDetector : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag(_tagToLookFor))
+        if (collision.CompareTag("PlayerHurtbox"))
         {
             TargetPosition = collision.transform.position;
         }
@@ -38,7 +39,7 @@ public class TargetDetector : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(_tagToLookFor))
+        if (collision.CompareTag("PlayerHurtbox"))
         {
             IsDetecting = false;
         }
