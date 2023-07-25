@@ -1,0 +1,8 @@
+﻿NewRocker
+license: SIL Open Font License (OFL)
+link: https://www.fontspace.com/newrocker-font-f15707
+
+
+Swansea
+license: Public Domain
+link: https://www.fontspace.com/swansea-font-f5873

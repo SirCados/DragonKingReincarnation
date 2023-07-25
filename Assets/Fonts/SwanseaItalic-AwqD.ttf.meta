@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2fcec00f2d5ab1c4f8d35b4596b36cca
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Swansea
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5a420834931c1b84a8d75ceafb1e8384, type: 3}
+  - {fileID: 12800000, guid: bc3ff431875f55c4b908d454f831e949, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
