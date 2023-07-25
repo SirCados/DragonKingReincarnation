@@ -6,6 +6,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 {
     public bool IsDead = false;
 
+    Animator _animator;
     CharacterAttributes _attributes;
     CharacterController _characterController;
     GameObject _pivot; //used to move hitbox/target detector/attack range so it faces correct direction
@@ -28,6 +29,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 
     void SetupOrcCharacterController()
     {
+        //_animator = GetComponent<Animator>();
         _attributes = GetComponent<CharacterAttributes>();
         _characterController = GetComponent<CharacterController>();
         _pivot = GameObject.Find("Pivot");
@@ -94,6 +96,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         }
 
         StateControllerUpdate();
+        
     }
     
 
@@ -119,11 +122,12 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     {
         float targetDirectionX = targetPosition.x - transform.position.x;
         float targetDirectionY = targetPosition.y - transform.position.y;
-        Vector3 movementVector = new Vector3(targetDirectionX, targetDirectionY, 0);
+        Vector3 movementVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
         Vector3 movement = movementVector * _attributes.MovementSpeed * Time.deltaTime;
 
         RotatePivot(movementVector);
-        _characterController.Move(movement);        
+        print(movementVector);
+        //_characterController.Move(movement);        
     }
 
     public void LookForTarget(Vector3 lastPositionOfTarget)
@@ -146,7 +150,6 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        print(angle);
 
         _pivot.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 10000 * Time.deltaTime);
 
