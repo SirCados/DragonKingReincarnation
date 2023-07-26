@@ -1,0 +1,236 @@
+fileFormatVersion: 2
+guid: 7721e67dbe07f3f448f458d130953133
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Pig Sprite Sheet 2_24
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 137
+        width: 93
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3554bdcf0c847894fac87312e2864ca8
+      internalID: -1593881350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pig Sprite Sheet 2_25
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 122
+        width: 60
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07df93a6be77cb94187d863c975b56d6
+      internalID: -103851137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pig Sprite Sheet 2_26
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 119
+        width: 56
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96100f401e9347e468399bbac6c4a21f
+      internalID: 2102903254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pig Sprite Sheet 2_27
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 36
+        width: 93
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fc29ed70e8ff7e44b405421d629bc92
+      internalID: -415879650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Pig Sprite Sheet 2_28: 791150070
+      Pig Sprite Sheet 2_1: -2114769536
+      Pig Sprite Sheet 2_7: -1551015521
+      Pig Sprite Sheet 2_16: -1632965966
+      Pig Sprite Sheet 2_12: -2043637692
+      Pig Sprite Sheet 2_3: -2130089435
+      Pig Sprite Sheet 2_2: 624860883
+      Pig Sprite Sheet 2_15: 236614245
+      Pig Sprite Sheet 2_4: -631247598
+      Pig Sprite Sheet 2_19: -957510023
+      Pig Sprite Sheet 2_5: 805726607
+      Pig Sprite Sheet 2_6: 908796422
+      Pig Sprite Sheet 2_8: -1773831779
+      Pig Sprite Sheet 2_20: -420900644
+      Pig Sprite Sheet 2_11: -1411645521
+      Pig Sprite Sheet 2_24: -1593881350
+      Pig Sprite Sheet 2_10: 962133905
+      Pig Sprite Sheet 2_17: -1744350068
+      Pig Sprite Sheet 2_18: -519817391
+      Pig Sprite Sheet 2_21: 1814875799
+      Pig Sprite Sheet 2_26: 2102903254
+      Pig Sprite Sheet 2_25: -103851137
+      Pig Sprite Sheet 2_22: 147071760
+      Pig Sprite Sheet 2_23: 1973668281
+      Pig Sprite Sheet 2_13: 819378538
+      Pig Sprite Sheet 2_0: -1381427974
+      Pig Sprite Sheet 2_9: -839672234
+      Pig Sprite Sheet 2_14: -716179196
+      Pig Sprite Sheet 2_27: -415879650
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
