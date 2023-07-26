@@ -10,8 +10,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 
     Animator _animator;
     CharacterAttributes _attributes;
-    CharacterController _characterController;
-    GameObject _pivot; //used to move hitbox/target detector/attack range so it faces correct direction
+    CharacterController _characterController;    
     Hitbox _hitbox;
     TargetDetector _attackRangeDetector;
     TargetDetector _targetDectector;
@@ -35,11 +34,10 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     {
         _animator = GetComponentInChildren<Animator>();
         _attributes = GetComponent<CharacterAttributes>();
-        _characterController = GetComponent<CharacterController>();
-        _pivot = GameObject.Find("Pivot");
-        _hitbox = _pivot.GetComponentInChildren<Hitbox>();
-        _attackRangeDetector = GameObject.Find("AttackRangeDetector").GetComponent<TargetDetector>();
-        _targetDectector = GameObject.Find("TargetDetector").GetComponent<TargetDetector>();
+        _characterController = GetComponent<CharacterController>();        
+        _hitbox = GetComponentInChildren<Hitbox>();
+        _attackRangeDetector = _hitbox.GetComponentInChildren<TargetDetector>();
+        _targetDectector = GetComponentInChildren<TargetDetector>();
 
         _idleState = new IdleState();
         _chaseState = new ChaseState();
@@ -52,8 +50,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         OrcStateEngine();
         StateTracker = _currentState.ToString();
     }
@@ -87,6 +84,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
                 BeginAttack();
                 break;
             case ChaseState:
+                CheckForTarget();
                 ToggleAnimatorConditions("isWalking");
                 MoveToTarget(_targetDectector.TargetPosition);
                 break;
@@ -174,7 +172,6 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         Vector3 movementVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
         Vector3 movement = movementVector * _attributes.MovementSpeed * Time.deltaTime;
 
-        RotatePivot(movementVector);
         _animator.SetFloat("xDirection", movementVector.x);
         _animator.SetFloat("yDirection", movementVector.y);
         print(movementVector);
@@ -197,13 +194,4 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     {
         //nothing yet
     }
-
-    public void RotatePivot(Vector3 movementVector)
-    {
-        float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-        _pivot.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 10000 * Time.deltaTime);
-    }
-    //-- IMobileEnemy functions --//
 }
