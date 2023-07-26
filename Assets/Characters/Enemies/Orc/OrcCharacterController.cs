@@ -6,7 +6,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 {
     public bool IsDead = false;
 
-    [SerializeField] State StateTracker;
+    [SerializeField] string StateTracker;
 
     Animator _animator;
     CharacterAttributes _attributes;
@@ -55,7 +55,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     {
         
         OrcStateEngine();
-        StateTracker = _currentState;
+        StateTracker = _currentState.ToString();
     }
 
     void CheckForTarget()
