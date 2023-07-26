@@ -47,7 +47,7 @@ public class OrcCharacterControllerTwo : CharacterStateController, IAttacker, IM
     }
     void Update()
     {
-        if(_currentState == _idleState)
+        if (_currentState == _idleState || _currentState == _chaseState)
         {
             _isAttacking = false;
         }
@@ -61,6 +61,8 @@ public class OrcCharacterControllerTwo : CharacterStateController, IAttacker, IM
         switch (_currentState)
         {
             case IdleState:
+
+                _animator.SetBool("isRecovering", false);
                 _animator.SetBool("isWalking", false);
                 _animator.SetBool("isIdle", true);
                 break;
@@ -70,7 +72,6 @@ public class OrcCharacterControllerTwo : CharacterStateController, IAttacker, IM
                 MoveToTarget(_targetDectector.TargetPosition);
                 break;
             case WindupState:
-                _animator.SetBool("isWalking", false);
                 Windup();
                 break;
             case AttackState:
@@ -88,12 +89,12 @@ public class OrcCharacterControllerTwo : CharacterStateController, IAttacker, IM
 
     void CheckForTarget()
     {
-        if (_attackRangeDetector.IsDetecting && !_isAttacking)
+        if (_attackRangeDetector.IsDetecting && !_isAttacking && _currentState == _chaseState)
         {
             print("start windup");
             _isAttacking = true;
             ChangeState(_windupState);
-            Windup();
+            OrcStateEngine();
         }
         else if (_targetDectector.IsDetecting && !_isAttacking)
         {
@@ -106,7 +107,6 @@ public class OrcCharacterControllerTwo : CharacterStateController, IAttacker, IM
         
         if(_currentState == _chaseState)
         {
-            print("chase");
             OrcStateEngine();
         }
     }
@@ -114,19 +114,27 @@ public class OrcCharacterControllerTwo : CharacterStateController, IAttacker, IM
     public void Windup()
     {
         print("windup begins");
-        StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _attackState));
+
+        _animator.SetBool("isWalking", false);
+        _animator.SetBool("isWindup", true);
+        StartCoroutine(ProcessAttack(_attributes.AttackSpeed/2, _attackState));
     }
 
     public void Attack()
     {
         print("attack begins");
-        StartCoroutine(ProcessAttack(.1f, _attackRecoveryState));
+
+        _animator.SetBool("isWindup", false);
+        _animator.SetBool("isAttacking", true);
+        StartCoroutine(ProcessAttack(.15f, _attackRecoveryState));
     }
 
     public void Recover()
     {
         print("recover begins");
-        StartCoroutine(ProcessAttack(_attributes.AttackSpeed * 2, _idleState));
+        _animator.SetBool("isAttacking", false);
+        _animator.SetBool("isRecovering", true);
+        StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _idleState));
     }
 
     public void BeIdle()

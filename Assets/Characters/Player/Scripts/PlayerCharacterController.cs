@@ -51,25 +51,24 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
     //From Player Input component. Captures input from specific key bindings
     //To see bindings check "Characters\Player\Player Inputs\DragonKingReincarnation"
     void OnMove(InputValue movementValue)
-    {
-        if (_currentState != _moveState || _currentState != _idleState)
-        {
-            _movementVector = Vector2.zero;
-            _storedMovementVector = movementValue.Get<Vector2>();
-        }
-        else
-        {
+    {        
+        //if (_currentState != _moveState || _currentState != _idleState)
+        //{
+        //    _movementVector = Vector2.zero;
+        //    print(movementValue);
+        //    _storedMovementVector = movementValue.Get<Vector2>();
+        //}
+        //else
+        //{
             _storedMovementVector = Vector2.zero;
             _movementVector = movementValue.Get<Vector2>();
-        }
+            print(_movementVector);
+        //}
     }
 
     void ProcessInput()
     {
-        if (_currentState != _attackState || _currentState == _attackRecoveryState)
-        {
-            MovePlayer();
-        }
+        MovePlayer();        
     }
 
     void MovePlayer()
@@ -82,8 +81,8 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
 
         if (_movementVector != Vector2.zero)
         {
-            print(_movementVector);
-            ChangeState(_moveState);
+            print("moving!");
+            //ChangeState(_moveState);
 
             Vector3 directionVector = new Vector3(_movementVector.x, _movementVector.y, 0).normalized;
             Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
@@ -94,7 +93,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         }
         else
         {
-            ChangeState(_idleState);
+            //ChangeState(_idleState);
         }
     }
 
@@ -105,7 +104,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         if (_passedTime >= _attributes.AttackSpeed)
         {
             Debug.Log("should be over");
-            ChangeState(_idleState);
+            //ChangeState(_idleState);
         }
     }
 
@@ -119,7 +118,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
     //-- IAttacker functions --//
     public void Attack()
     {
-        ChangeState(_attackState);
+        //ChangeState(_attackState);
     }
 
     public void SpawnProjectile(GameObject projectileToSpawn)
@@ -134,7 +133,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
 
     public void TakeHurt(int damageToTake)
     {
-        print("ow!");
+        print("ouch!");
     }
     //-- IAttacker functions --//
 
