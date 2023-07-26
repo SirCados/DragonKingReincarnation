@@ -82,11 +82,12 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
 
         if (_movementVector != Vector2.zero)
         {
+            print(_movementVector);
             ChangeState(_moveState);
 
             Vector3 directionVector = new Vector3(_movementVector.x, _movementVector.y, 0).normalized;
             Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
-
+            print(movement);
             transform.Translate(movement);
 
             //_characterController.Move(movement * _attributes.MovementSpeed * Time.deltaTime);
@@ -112,11 +113,11 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
     //To see bindings check "Characters\Player\Player Inputs\DragonKingReincarnation"
     void OnFire()
     {
-        BeginAttack();
+        Attack();
     }
 
     //-- IAttacker functions --//
-    public void BeginAttack()
+    public void Attack()
     {
         ChangeState(_attackState);
     }

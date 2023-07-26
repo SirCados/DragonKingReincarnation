@@ -21,6 +21,10 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     IdleState _idleState;
     ChaseState _chaseState;
     HurtState _hurtState;
+    WindupState _windupState;
+
+    bool _isAttacking = false;
+    bool _isCoroutineRunning = false;
 
     float _passedTime = 0;
 
@@ -36,21 +40,21 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         _attributes = GetComponent<CharacterAttributes>();
         _characterController = GetComponent<CharacterController>();        
         _hitbox = GetComponentInChildren<Hitbox>();
-        _attackRangeDetector = _hitbox.GetComponentInChildren<TargetDetector>();
+        _attackRangeDetector = _hitbox.GetComponentInParent<TargetDetector>();
         _targetDectector = GetComponentInChildren<TargetDetector>();
-
         _idleState = new IdleState();
         _chaseState = new ChaseState();
         _hurtState = new HurtState();
+        _windupState = new WindupState();        
         _attackRecoveryState = new RecoveryState();
-        _attackState = new AttackState(_hitbox, 0.1f, _attackRecoveryState);
+        _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
 
         ChangeState(_idleState);
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
         OrcStateEngine();
         StateTracker = _currentState.ToString();
     }
@@ -59,21 +63,22 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     {
         if (_targetDectector.IsDetecting)
         {
-            ChangeState(_chaseState);
+            if (_currentState == _idleState)
+            {
+                ChangeState(_chaseState);
+            }            
         }
-        else
+        else if(_currentState == _chaseState)
         {
             ChangeState(_idleState);
         }
-    }
 
-    void CheckIfTargetIsInRange(TargetDetector attackRange)
-    {
-        if (attackRange.IsDetecting)
-        {
-            ChangeState(_attackState);           
-        }        
-    }
+        if (_currentState == _chaseState && _attackRangeDetector.IsDetecting && !_isAttacking)
+        {            
+            print("is attacking");
+            ChangeState(_windupState);
+        }
+    }   
 
     void OrcStateEngine()
     {
@@ -81,7 +86,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         {
             case AttackState:
                 ToggleAnimatorConditions("isAttacking");
-                BeginAttack();
+                Attack();
                 break;
             case ChaseState:
                 CheckForTarget();
@@ -96,8 +101,11 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
                 ToggleAnimatorConditions("isIdle");
                 break;
             case RecoveryState:
-                ToggleAnimatorConditions("isIdle");
-                HandleAttackSpeed();
+                ToggleAnimatorConditions("isRecovering");                
+                break;
+            case WindupState:
+                ToggleAnimatorConditions("isWindup");
+                AttackWindup();
                 break;
         }
 
@@ -106,51 +114,55 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 
     public void ToggleAnimatorConditions(string conditionToTarget)
     {
-        _animator.SetBool("isWalking", false);
-        _animator.SetBool("isIdle", false);
-        _animator.SetBool("isAttacking", false);
-        _animator.SetBool("isRecovering", false);
-        _animator.SetBool("isHurt", false);
-
-        switch (conditionToTarget)
+        if (_currentState.IsNewState)
         {
-            case "isWalking":
-                _animator.SetBool("isWalking", true);
-                break;
-            case "isIdle":
-                _animator.SetBool("isIdle", true);
-                break;
-            case "isAttacking":
-                _animator.SetBool("isAttacking", true);
-                break;
-            case "isRecovering":
-                _animator.SetBool("isRecovering", true);
-                break;
-            case "isHurt":
-                _animator.SetBool("isHurt", true);
-                break;
+            _currentState.IsNewState = true;
+
+            _animator.SetBool("isWalking", false);
+            _animator.SetBool("isWindup", false);
+            _animator.SetBool("isIdle", false);
+            _animator.SetBool("isAttacking", false);
+            _animator.SetBool("isRecovering", false);
+            _animator.SetBool("isHurt", false);
+
+            switch (conditionToTarget)
+            {
+                case "isWalking":
+                    _animator.SetBool("isWalking", true);
+                    break;
+                case "isIdle":
+                    _animator.SetBool("isIdle", true);
+                    break;
+                case "isAttacking":
+                    _animator.SetBool("isAttacking", true);
+                    break;
+                case "isRecovering":
+                    _animator.SetBool("isRecovering", true);
+                    break;
+                case "isHurt":
+                    _animator.SetBool("isHurt", true);
+                    break;
+                case "isWindup":
+                    _animator.SetBool("isWindup", true);
+                    break;
+            }
         }
+    } 
+    
+    public void AttackWindup()
+    {
+        if (!_isAttacking)
+        {
+            _isAttacking = true;
+            print("windup");
+            StartCoroutine(AttackProcess());
+        }    
     }
 
-    void HandleAttackSpeed()
+    //-- IAttacker functions --//
+    public void Attack()
     {
-        _passedTime += Time.deltaTime;
-        print("recovery: " + _passedTime);
-        if (_passedTime >= 1)
-        {
-            _passedTime = 0;
-            ChangeState(_idleState);
-        }                
-    }
-
-//-- IAttacker functions --//
-    public void BeginAttack()
-    {
-        //extra stuff can go here
-        if (_animator.GetAnimatorTransitionInfo(0).duration == 0 && _currentState == _attackState)
-        {
-            _currentState = _attackRecoveryState;
-        }
+        StartCoroutine(AttackProcess());
     }
 
     public void SpawnProjectile(GameObject projectileToSpawn)
@@ -174,10 +186,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 
         _animator.SetFloat("xDirection", movementVector.x);
         _animator.SetFloat("yDirection", movementVector.y);
-        print(movementVector);
         transform.Translate(movement);
-
-        CheckIfTargetIsInRange(_attackRangeDetector);
     }
 
     public void LookForTarget(Vector3 lastPositionOfTarget)
@@ -193,5 +202,28 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     public void GoToSleep()
     {
         //nothing yet
+    }
+
+    IEnumerator AttackProcess()
+    {
+        if (!_isCoroutineRunning)
+        {
+            print("wait");
+            _isCoroutineRunning = true;
+            yield return new WaitForSeconds(_attributes.AttackSpeed);
+            print("waiting over");
+            if (_currentState == _windupState)
+            {
+                _isCoroutineRunning = false;
+                ChangeState(_attackState);
+            }
+            else if (_currentState == _attackState)
+            {
+                print("attack done");
+                _isAttacking = false;
+                _isCoroutineRunning = false;
+                ChangeState(_idleState);
+            }
+        }        
     }
 }

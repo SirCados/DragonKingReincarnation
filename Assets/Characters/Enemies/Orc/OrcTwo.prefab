@@ -94,13 +94,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7561038150789121514}
-  - component: {fileID: 3848770106618773767}
+  - component: {fileID: 4715679476011215150}
   - component: {fileID: 7548052034012999246}
   - component: {fileID: 4064820279093972012}
   - component: {fileID: 8351199077881358618}
   - component: {fileID: 4793464572736450015}
   m_Layer: 0
-  m_Name: Orc
+  m_Name: OrcTwo
   m_TagString: EnemyHurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3848770106618773767
+--- !u!114 &4715679476011215150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,11 +133,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5910492150246924616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23c23dcb961cb84b92febc02f9dc27d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53b51781aeaef6a4fbde9f59fe52a6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDead: 0
-  StateTracker: 
 --- !u!114 &7548052034012999246
 MonoBehaviour:
   m_ObjectHideFlags: 0
