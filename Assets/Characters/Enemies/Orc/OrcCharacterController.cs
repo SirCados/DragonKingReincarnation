@@ -6,11 +6,10 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 {
     public bool IsDead = false;
 
-    [SerializeField] string StateTracker;
+    public string StateTracker;
 
     Animator _animator;
     CharacterAttributes _attributes;
-    CharacterController _characterController;    
     Hitbox _hitbox;
     TargetDetector _attackRangeDetector;
     TargetDetector _targetDectector;
@@ -24,11 +23,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     WindupState _windupState;
 
     bool _isAttacking = false;
-    bool _isCoroutineRunning = false;
 
-    float _passedTime = 0;
-
-    // Start is called before the first frame update
     void Start()
     {
         SetupOrcCharacterController();
@@ -38,145 +33,131 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     {
         _animator = GetComponentInChildren<Animator>();
         _attributes = GetComponent<CharacterAttributes>();
-        _characterController = GetComponent<CharacterController>();        
         _hitbox = GetComponentInChildren<Hitbox>();
+        _hitbox.gameObject.SetActive(false);
         _attackRangeDetector = _hitbox.GetComponentInParent<TargetDetector>();
         _targetDectector = GetComponentInChildren<TargetDetector>();
         _idleState = new IdleState();
         _chaseState = new ChaseState();
         _hurtState = new HurtState();
-        _windupState = new WindupState();        
+        _windupState = new WindupState();
         _attackRecoveryState = new RecoveryState();
         _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
 
         ChangeState(_idleState);
     }
-
-    // Update is called once per frame
     void Update()
     {
-        OrcStateEngine();
+        if (_currentState == _idleState || _currentState == _chaseState)
+        {
+            _isAttacking = false;
+        }
+        CheckForTarget();
         StateTracker = _currentState.ToString();
+    }
+
+    void OrcStateEngine()
+    {
+        //could I use delegates in constructor of states once all of my states are determined?
+        switch (_currentState)
+        {
+            case IdleState:
+
+                _animator.SetBool("isRecovering", false);
+                _animator.SetBool("isWalking", false);
+                _animator.SetBool("isIdle", true);
+                break;
+            case ChaseState:
+                _animator.SetBool("isIdle", false);
+                _animator.SetBool("isWalking", true);
+                MoveToTarget(_targetDectector.TargetPosition);
+                break;
+            case WindupState:
+                Windup();
+                break;
+            case AttackState:
+                Attack();
+                break;
+            case RecoveryState:
+                Recover();
+                break;
+            case HurtState:
+                break;
+        }
+
+        StateControllerUpdate();
     }
 
     void CheckForTarget()
     {
-        if (_targetDectector.IsDetecting)
+        if (_attackRangeDetector.IsDetecting && !_isAttacking && _currentState == _chaseState)
         {
-            if (_currentState == _idleState)
-            {
-                ChangeState(_chaseState);
-            }            
-        }
-        else if(_currentState == _chaseState)
-        {
-            ChangeState(_idleState);
-        }
-
-        if (_currentState == _chaseState && _attackRangeDetector.IsDetecting && !_isAttacking)
-        {            
-            print("is attacking");
+            print("start windup");
+            _isAttacking = true;
             ChangeState(_windupState);
+            OrcStateEngine();
         }
-    }   
-
-    void OrcStateEngine()
-    {
-        switch (_currentState)
+        else if (_targetDectector.IsDetecting && !_isAttacking)
         {
-            case AttackState:
-                ToggleAnimatorConditions("isAttacking");
-                Attack();
-                break;
-            case ChaseState:
-                CheckForTarget();
-                ToggleAnimatorConditions("isWalking");
-                MoveToTarget(_targetDectector.TargetPosition);
-                break;
-            case HurtState:
-                ToggleAnimatorConditions("isHurt");
-                break;
-            case IdleState:
-                CheckForTarget();
-                ToggleAnimatorConditions("isIdle");
-                break;
-            case RecoveryState:
-                ToggleAnimatorConditions("isRecovering");                
-                break;
-            case WindupState:
-                ToggleAnimatorConditions("isWindup");
-                AttackWindup();
-                break;
-        }
-
-        StateControllerUpdate();        
-    }
-
-    public void ToggleAnimatorConditions(string conditionToTarget)
-    {
-        if (_currentState.IsNewState)
-        {
-            _currentState.IsNewState = true;
-
-            _animator.SetBool("isWalking", false);
-            _animator.SetBool("isWindup", false);
-            _animator.SetBool("isIdle", false);
-            _animator.SetBool("isAttacking", false);
-            _animator.SetBool("isRecovering", false);
-            _animator.SetBool("isHurt", false);
-
-            switch (conditionToTarget)
+            if (_currentState != _chaseState)
             {
-                case "isWalking":
-                    _animator.SetBool("isWalking", true);
-                    break;
-                case "isIdle":
-                    _animator.SetBool("isIdle", true);
-                    break;
-                case "isAttacking":
-                    _animator.SetBool("isAttacking", true);
-                    break;
-                case "isRecovering":
-                    _animator.SetBool("isRecovering", true);
-                    break;
-                case "isHurt":
-                    _animator.SetBool("isHurt", true);
-                    break;
-                case "isWindup":
-                    _animator.SetBool("isWindup", true);
-                    break;
+                print("start chase");
+                ChangeState(_chaseState);
             }
         }
-    } 
-    
-    public void AttackWindup()
-    {
-        if (!_isAttacking)
+        
+        if(_currentState == _chaseState)
         {
-            _isAttacking = true;
-            print("windup");
-            StartCoroutine(AttackProcess());
-        }    
+            OrcStateEngine();
+        }
     }
 
-    //-- IAttacker functions --//
+    public void Windup()
+    {
+        print("windup begins");
+
+        _animator.SetBool("isWalking", false);
+        _animator.SetBool("isWindup", true);
+        StartCoroutine(ProcessAttack(_attributes.AttackSpeed/2, _attackState));
+    }
+
     public void Attack()
     {
-        StartCoroutine(AttackProcess());
+        print("attack begins");
+
+        _animator.SetBool("isWindup", false);
+        _animator.SetBool("isAttacking", true);
+        StartCoroutine(ProcessAttack(.15f, _attackRecoveryState));
     }
 
-    public void SpawnProjectile(GameObject projectileToSpawn)
+    public void Recover()
     {
-        //No projectiles to spawn yet.
+        print("recover begins");
+        _animator.SetBool("isAttacking", false);
+        _animator.SetBool("isRecovering", true);
+        StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _idleState));
+    }
+
+    public void BeIdle()
+    {
+        throw new System.NotImplementedException();
     }
 
     public int GetAttackDamage()
     {
         return _attributes.AttackDamage;
     }
-//-- IAttacker functions --//
 
-//-- IMobileEnemy functions --//
+    public void GoToSleep()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void LookForTarget(Vector3 lastPositionOfTarget)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void MoveToTarget(Vector3 targetPosition)
     {
         float targetDirectionX = targetPosition.x - transform.position.x;
@@ -189,41 +170,15 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         transform.Translate(movement);
     }
 
-    public void LookForTarget(Vector3 lastPositionOfTarget)
+    public void SpawnProjectile(GameObject projectileToSpawn)
     {
-        //nothing yet
+        throw new System.NotImplementedException();
     }
 
-    public void BeIdle()
+    IEnumerator ProcessAttack(float time, State stateToChangeTo)
     {
-        //nothing yet
-    }
-
-    public void GoToSleep()
-    {
-        //nothing yet
-    }
-
-    IEnumerator AttackProcess()
-    {
-        if (!_isCoroutineRunning)
-        {
-            print("wait");
-            _isCoroutineRunning = true;
-            yield return new WaitForSeconds(_attributes.AttackSpeed);
-            print("waiting over");
-            if (_currentState == _windupState)
-            {
-                _isCoroutineRunning = false;
-                ChangeState(_attackState);
-            }
-            else if (_currentState == _attackState)
-            {
-                print("attack done");
-                _isAttacking = false;
-                _isCoroutineRunning = false;
-                ChangeState(_idleState);
-            }
-        }        
+        yield return new WaitForSeconds(time);
+        ChangeState(stateToChangeTo);
+        OrcStateEngine();
     }
 }
