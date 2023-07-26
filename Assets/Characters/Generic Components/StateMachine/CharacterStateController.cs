@@ -11,8 +11,8 @@ public class CharacterStateController : MonoBehaviour
             _currentState.OnUpdate();
 
             if (_currentState.NextState != null && _currentState.ShouldStateChange)
-            {              
-                
+            {
+                _currentState.ShouldStateChange = false;
                 ChangeState(_currentState.NextState);
             }
         }
@@ -26,7 +26,6 @@ public class CharacterStateController : MonoBehaviour
         }
 
         _currentState = newState;
-        _currentState.ShouldStateChange = false;
         _currentState.OnEnterState();
     }
 }

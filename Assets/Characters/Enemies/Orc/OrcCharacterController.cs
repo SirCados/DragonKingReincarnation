@@ -6,6 +6,8 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
 {
     public bool IsDead = false;
 
+    [SerializeField] State StateTracker;
+
     Animator _animator;
     CharacterAttributes _attributes;
     CharacterController _characterController;
@@ -20,6 +22,8 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     IdleState _idleState;
     ChaseState _chaseState;
     HurtState _hurtState;
+
+    float _passedTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +44,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         _idleState = new IdleState();
         _chaseState = new ChaseState();
         _hurtState = new HurtState();
-        _attackRecoveryState = new RecoveryState(_attributes.AttackSpeed, _idleState);
+        _attackRecoveryState = new RecoveryState();
         _attackState = new AttackState(_hitbox, 0.1f, _attackRecoveryState);
 
         ChangeState(_idleState);
@@ -49,8 +53,9 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     // Update is called once per frame
     void Update()
     {
-        CheckForTarget();
+        
         OrcStateEngine();
+        StateTracker = _currentState;
     }
 
     void CheckForTarget()
@@ -58,7 +63,6 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         if (_targetDectector.IsDetecting)
         {
             ChangeState(_chaseState);
-            CheckIfTargetIsInRange(_attackRangeDetector);
         }
         else
         {
@@ -70,10 +74,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
     {
         if (attackRange.IsDetecting)
         {
-            if (_currentState == _chaseState || _currentState == _idleState)
-            {
-                ChangeState(_attackState);
-            }
+            ChangeState(_attackState);           
         }        
     }
 
@@ -82,26 +83,76 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         switch (_currentState)
         {
             case AttackState:
+                ToggleAnimatorConditions("isAttacking");
                 BeginAttack();
                 break;
             case ChaseState:
+                ToggleAnimatorConditions("isWalking");
                 MoveToTarget(_targetDectector.TargetPosition);
                 break;
             case HurtState:
+                ToggleAnimatorConditions("isHurt");
                 break;
             case IdleState:
+                CheckForTarget();
+                ToggleAnimatorConditions("isIdle");
                 break;
             case RecoveryState:
+                ToggleAnimatorConditions("isIdle");
+                HandleAttackSpeed();
                 break;
         }
 
         StateControllerUpdate();        
-    }    
+    }
+
+    public void ToggleAnimatorConditions(string conditionToTarget)
+    {
+        _animator.SetBool("isWalking", false);
+        _animator.SetBool("isIdle", false);
+        _animator.SetBool("isAttacking", false);
+        _animator.SetBool("isRecovering", false);
+        _animator.SetBool("isHurt", false);
+
+        switch (conditionToTarget)
+        {
+            case "isWalking":
+                _animator.SetBool("isWalking", true);
+                break;
+            case "isIdle":
+                _animator.SetBool("isIdle", true);
+                break;
+            case "isAttacking":
+                _animator.SetBool("isAttacking", true);
+                break;
+            case "isRecovering":
+                _animator.SetBool("isRecovering", true);
+                break;
+            case "isHurt":
+                _animator.SetBool("isHurt", true);
+                break;
+        }
+    }
+
+    void HandleAttackSpeed()
+    {
+        _passedTime += Time.deltaTime;
+        print("recovery: " + _passedTime);
+        if (_passedTime >= 1)
+        {
+            _passedTime = 0;
+            ChangeState(_idleState);
+        }                
+    }
 
 //-- IAttacker functions --//
     public void BeginAttack()
     {
         //extra stuff can go here
+        if (_animator.GetAnimatorTransitionInfo(0).duration == 0 && _currentState == _attackState)
+        {
+            _currentState = _attackRecoveryState;
+        }
     }
 
     public void SpawnProjectile(GameObject projectileToSpawn)
@@ -127,7 +178,9 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         _animator.SetFloat("xDirection", movementVector.x);
         _animator.SetFloat("yDirection", movementVector.y);
         print(movementVector);
-        //_characterController.Move(movement);        
+        transform.Translate(movement);
+
+        CheckIfTargetIsInRange(_attackRangeDetector);
     }
 
     public void LookForTarget(Vector3 lastPositionOfTarget)
@@ -150,9 +203,7 @@ public class OrcCharacterController : CharacterStateController, IAttacker, IMobi
         float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-
         _pivot.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 10000 * Time.deltaTime);
-
     }
     //-- IMobileEnemy functions --//
 }

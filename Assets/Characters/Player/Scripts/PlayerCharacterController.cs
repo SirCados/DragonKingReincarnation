@@ -15,6 +15,8 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
     Hitbox _hitbox;
     GameObject _hitboxPivot;
 
+    float _passedTime = 0;
+
     bool _isInputBlockedInternally = false;
     Vector2 _movementVector; //Input from Player Inputs component. Look for OnMove function in this script
     Vector2 _storedMovementVector; //Input from Player Inputs component if not in a moving state. Look for OnMove function in this script
@@ -33,7 +35,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         _moveState = new PlayerMoveState();
         _idleState = new IdleState();
         _hurtState = new HurtState();
-        _attackRecoveryState = new RecoveryState(_attributes.AttackSpeed, _idleState);
+        _attackRecoveryState = new RecoveryState();
         _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
 
         ChangeState(_idleState);
@@ -95,21 +97,28 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         }
     }
 
+    void HandleAttackSpeed()
+    {
+        _passedTime += Time.deltaTime;
+        Debug.Log(" recoveryState");
+        if (_passedTime >= _attributes.AttackSpeed)
+        {
+            Debug.Log("should be over");
+            ChangeState(_idleState);
+        }
+    }
+
     //From Player Input component. Captures input from specific key bindings
     //To see bindings check "Characters\Player\Player Inputs\DragonKingReincarnation"
     void OnFire()
     {
         BeginAttack();
-
     }
 
     //-- IAttacker functions --//
     public void BeginAttack()
     {
-        if (_currentState == _moveState || _currentState == _idleState)
-        {
-            ChangeState(_attackState);
-        }
+        ChangeState(_attackState);
     }
 
     public void SpawnProjectile(GameObject projectileToSpawn)
