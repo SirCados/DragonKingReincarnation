@@ -23,7 +23,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     Hitbox _hitbox;
     GameObject _hitboxPivot;
 
-    bool _isInputBlockedInternally = false;
+    //bool _isInputBlockedInternally = false;
     Vector2 _movementVector; //Input from Player Inputs component. Look for OnMove function in this script
     Vector2 _storedMovementVector; //Input from Player Inputs component if not in a moving state. Look for OnMove function in this script
 

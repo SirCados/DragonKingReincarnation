@@ -6,7 +6,7 @@ public class TargetDetector : MonoBehaviour
     public TargetType WillAttack = TargetType.PLAYER;
     public bool IsDetecting;
 
-    string _tagToLookFor;
+    //string _tagToLookFor;
 
     public enum TargetType
     {
@@ -50,10 +50,10 @@ public class TargetDetector : MonoBehaviour
         switch (WillAttack)
         {
             case TargetType.PLAYER:
-                _tagToLookFor = "PlayerHurtbox";
+                //_tagToLookFor = "PlayerHurtbox";
                 break;
             case TargetType.ENEMY:
-                _tagToLookFor = "EnemyHurtbox";
+                //_tagToLookFor = "EnemyHurtbox";
                 break;
         }
     }
