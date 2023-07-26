@@ -12,10 +12,10 @@ public class CharacterAttributes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetupEnemyCharacter();
+        SetupCharacterAttributes();
     }
 
-    void SetupEnemyCharacter()
+    void SetupCharacterAttributes()
     {
         if (MaxHealth <= 0)
         {
