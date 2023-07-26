@@ -1,33 +1,28 @@
 using UnityEngine;
+using System.Collections;
 
 public class RecoveryState : State
 {
     float _attackRecoveryDuration;
     float _passedTime = 0;
 
-    public RecoveryState(float attackRecoveryDuration, IdleState idleState)
+    public RecoveryState()
     {
-        _attackRecoveryDuration = attackRecoveryDuration;
-        NextState = idleState;
     }
 
     public override void OnEnterState()
     {
-
+        Debug.Log("enter recoveryState");
     }
 
     public override void OnUpdate()
     {
-        _passedTime += Time.deltaTime;
-        if (_passedTime > _attackRecoveryDuration)
-        {
-            Debug.Log("should be over");
-            ShouldStateChange = true;
-        }
+        
     }
 
     public override void OnExitState()
     {
-        ShouldStateChange = false;
+
     }
+
 }

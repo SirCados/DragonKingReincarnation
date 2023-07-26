@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class AttackState : State
 {
@@ -16,13 +17,15 @@ public class AttackState : State
 
     public override void OnEnterState()
     {
+        
         _hitbox.gameObject.SetActive(true);
     }
 
     public override void OnUpdate()
     {
         _passedTime += Time.deltaTime;
-        if (_passedTime > _timeAttackIsActive)
+        Debug.Log("attackState");
+        if (_passedTime >= _timeAttackIsActive)
         {            
             ShouldStateChange = true;
         }
@@ -33,5 +36,10 @@ public class AttackState : State
         _hitbox.gameObject.SetActive(false);
         ShouldStateChange = false;
         _passedTime = 0;
+    }
+
+    IEnumerator AttackTime()
+    {
+        yield return new WaitForSeconds(_timeAttackIsActive);
     }
 }
