@@ -62,7 +62,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         switch (_currentState)
         {
             case IdleState:
-
                 _animator.SetBool("isRecovering", false);
                 _animator.SetBool("isWalking", false);
                 _animator.SetBool("isIdle", true);
@@ -92,7 +91,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     {
         if (_attackRangeDetector.IsDetecting && !_isAttacking && _currentState == _chaseState)
         {
-            print("start windup");
             _isAttacking = true;
             ChangeState(_windupState);
             CharacterStateEngine();
@@ -101,7 +99,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         {
             if (_currentState != _chaseState)
             {
-                print("start chase");
                 ChangeState(_chaseState);
             }
         }
@@ -114,8 +111,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
 
     public void Windup()
     {
-        print("windup begins");
-
         _animator.SetBool("isWalking", false);
         _animator.SetBool("isWindup", true);
         StartCoroutine(ProcessAttack(_attributes.AttackSpeed / 2, _attackState));
@@ -123,8 +118,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
 
     public void Attack()
     {
-        print("attack begins");
-
         _animator.SetBool("isWindup", false);
         _animator.SetBool("isAttacking", true);
         StartCoroutine(ProcessAttack(.15f, _attackRecoveryState));
@@ -132,7 +125,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
 
     public void Recover()
     {
-        print("recover begins");
         _animator.SetBool("isAttacking", false);
         _animator.SetBool("isRecovering", true);
         StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _idleState));
