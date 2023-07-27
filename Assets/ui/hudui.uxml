@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="hudContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-width: 1000px; max-height: 1000px; -unity-background-image-tint-color: rgb(250, 255, 255);">
+        <ui:ProgressBar value="50" title="Health" name="healthBar" focusable="true" style="width: 413px; -unity-font-style: bold-and-italic; font-size: 18px; -unity-background-image-tint-color: rgb(255, 79, 4); background-color: rgb(56, 56, 56); border-left-color: rgb(32, 32, 32); border-right-color: rgb(32, 32, 32); border-top-color: rgb(32, 32, 32); border-bottom-color: rgb(32, 32, 32);" />
+        <ui:VisualElement name="foodBar" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 146px; height: 75px; max-width: 250px; max-height: 75px; right: -850px; top: -30px;">
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="foodImage" style="top: 20px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="foodCount" style="max-width: 60px; left: 80px; top: -10px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
