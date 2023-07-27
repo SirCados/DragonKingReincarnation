@@ -40,6 +40,7 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
 
         if (_character.CurrentHealth <= 0)
         {
+            print("Ded x_x");
             _character.CurrentHealth = 0;
             IsDead = true;
         }

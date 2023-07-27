@@ -1,6 +1,6 @@
 public interface IAttacker
 {
-    void BeginAttack();
+    void Attack();
     void SpawnProjectile(UnityEngine.GameObject projectileToSpawn);
     int GetAttackDamage();
 }
