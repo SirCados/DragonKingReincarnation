@@ -1,0 +1,1069 @@
+fileFormatVersion: 2
+guid: 56be0c12788f75b4896f340f00f4ed95
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 827
+        width: 117
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c61f9fa28a9eb4389f59d93be875a8
+      internalID: -1207100188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 829
+        width: 117
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d801f41c8503c943bfbf29632c44ebb
+      internalID: -372772612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 830
+        width: 123
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db844a2396b45948ad811479234bdb5
+      internalID: -1101656297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 829
+        width: 118
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b763361a3918c5a40ae57dd77a9a36b8
+      internalID: 1135669579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 828
+        width: 120
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3215044fb7db8d44a82b7d40f483fc86
+      internalID: -627137407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 830
+        width: 120
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524df9b8ddf0b6d4eac5fa824513bc8b
+      internalID: 1361838318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 824
+        width: 115
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55fe3afdf65be343af23bfe6e431306
+      internalID: 539318679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 827
+        width: 158
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3e2f8242324ecd4faf09b4d8738c275
+      internalID: 49432155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 834
+        width: 133
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e6974b59477b74ca56cf8bb1c7bfc0
+      internalID: -1490665597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 837
+        width: 129
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a337e515120f6e44ea861a25de06ee03
+      internalID: 1252847784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 660
+        width: 81
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540e56f6c68bf494188e4e385e6757c1
+      internalID: 1800137741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 662
+        width: 78
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab5ff62dcc02064b83cf06fd3da0b29
+      internalID: 1774954873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 663
+        width: 77
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754afb7324959d747bf1373a5704a20d
+      internalID: 1118029135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 660
+        width: 80
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adbf0d72a319ba24d8573633fd98c9c2
+      internalID: 171676830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 661
+        width: 78
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e8c8effc73cf741bd7f2d54402f887
+      internalID: -2122860639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 662
+        width: 77
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08823cd2259434f4791900cc75d70b68
+      internalID: -2055461170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 659
+        width: 77
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aed82aa555ecaf478460ffda4240abe
+      internalID: 346022609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 646
+        width: 77
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ea0c9f56c4f2746b3475c642b42c03
+      internalID: -211957497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 657
+        width: 77
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbce92569fa3c8488d73e38fa3128c9
+      internalID: 80495811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 657
+        width: 77
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e2cace48f3aa2f4fb9758255a3eb6c5
+      internalID: -1902103100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 475
+        width: 117
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51db010f79a63243b5d69c8d4af9ad1
+      internalID: -930673927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 475
+        width: 117
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f153aef8d99e77e4db1f768e7e8eee4c
+      internalID: -1276977048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 475
+        width: 123
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c31ed2efa96135d4cb76446ce8f40ff3
+      internalID: 1159545908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 475
+        width: 118
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961ceb41b27b08e4da31c8111e8bbeea
+      internalID: 295757486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 475
+        width: 120
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f661dfa82f5c22458f8dddcc0b937e7
+      internalID: -233211472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 475
+        width: 120
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c7a20638591ee4d9122d9f12a3790f
+      internalID: -2076929642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 475
+        width: 115
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ad2aabd6c6dd13489b3c68e261dd643
+      internalID: 313166593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 475
+        width: 158
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8f6601f6feed24daa0b1dddececf59
+      internalID: 356245425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 475
+        width: 133
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977ff18e9fdd8f542ad2ccb45ebe53ce
+      internalID: -828981677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 475
+        width: 129
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3337b2ae472a9a45953f41317ae1a01
+      internalID: -2087410830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 251
+        width: 77
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a02562b253658a743b5f52d496fd97d7
+      internalID: -1389144463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 253
+        width: 77
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7217a751739001c4a939ef70d43c8542
+      internalID: 930310595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 255
+        width: 77
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220176ff16893d447af0008cb4fd25f1
+      internalID: -208529005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 255
+        width: 77
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af36ef28feeb8cd47aaf91a098237ea2
+      internalID: -944907889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 252
+        width: 77
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a5678561744794491fa5b95ad5d868
+      internalID: -662554948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 255
+        width: 77
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1093944b4f9244b47b54a677542b6b5a
+      internalID: 619079855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 252
+        width: 88
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6274ea428935004998b2b3942c897d9
+      internalID: -809180159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 239
+        width: 84
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d168f093e910e5c4e95ff2d7063f2f26
+      internalID: 214571777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 249
+        width: 77
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7beb85d5d0ca54d4a8eca9f932b1b198
+      internalID: -1216541289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 253
+        width: 77
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a30768e6b5512743836b5b91f89d379
+      internalID: 1891904078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 35
+        width: 138
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8bdef118f2f71b4fbb50b5ccb3aa1d5
+      internalID: 1046034456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 35
+        width: 111
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8786e931ee2754a418e7fd0c4c7dedd1
+      internalID: 1902351799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon Prince Sprite Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 35
+        width: 96
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8190f34ffc4cc6747b38e2a1270cae6c
+      internalID: 878932478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Dragon Prince Sprite Sheet_7: 49432155
+      Dragon Prince Sprite Sheet_19: -1902103100
+      Dragon Prince Sprite Sheet_3: 1135669579
+      Dragon Prince Sprite Sheet_13: 171676830
+      Dragon Prince Sprite Sheet_14: -2122860639
+      Dragon Prince Sprite Sheet_24: -233211472
+      Dragon Prince Sprite Sheet_37: 214571777
+      Dragon Prince Sprite Sheet_17: -211957497
+      Dragon Prince Sprite Sheet_18: 80495811
+      Dragon Prince Sprite Sheet_20: -930673927
+      Dragon Prince Sprite Sheet_11: 1774954873
+      Dragon Prince Sprite Sheet_32: -208529005
+      Dragon Prince Sprite Sheet_9: 1252847784
+      Dragon Prince Sprite Sheet_35: 619079855
+      Dragon Prince Sprite Sheet_6: 539318679
+      Dragon Prince Sprite Sheet_21: -1276977048
+      Dragon Prince Sprite Sheet_2: -1101656297
+      Dragon Prince Sprite Sheet_0: -1207100188
+      Dragon Prince Sprite Sheet_22: 1159545908
+      Dragon Prince Sprite Sheet_29: -2087410830
+      Dragon Prince Sprite Sheet_23: 295757486
+      Dragon Prince Sprite Sheet_38: -1216541289
+      Dragon Prince Sprite Sheet_31: 930310595
+      Dragon Prince Sprite Sheet_25: -2076929642
+      Dragon Prince Sprite Sheet_16: 346022609
+      Dragon Prince Sprite Sheet_40: 1046034456
+      Dragon Prince Sprite Sheet_5: 1361838318
+      Dragon Prince Sprite Sheet_33: -944907889
+      Dragon Prince Sprite Sheet_28: -828981677
+      Dragon Prince Sprite Sheet_27: 356245425
+      Dragon Prince Sprite Sheet_26: 313166593
+      Dragon Prince Sprite Sheet_10: 1800137741
+      Dragon Prince Sprite Sheet_15: -2055461170
+      Dragon Prince Sprite Sheet_1: -372772612
+      Dragon Prince Sprite Sheet_41: 1902351799
+      Dragon Prince Sprite Sheet_39: 1891904078
+      Dragon Prince Sprite Sheet_12: 1118029135
+      Dragon Prince Sprite Sheet_30: -1389144463
+      Dragon Prince Sprite Sheet_34: -662554948
+      Dragon Prince Sprite Sheet_8: -1490665597
+      Dragon Prince Sprite Sheet_36: -809180159
+      Dragon Prince Sprite Sheet_4: -627137407
+      Dragon Prince Sprite Sheet_42: 878932478
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
