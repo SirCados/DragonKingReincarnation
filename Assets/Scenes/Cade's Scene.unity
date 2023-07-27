@@ -681,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548052034012999246, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
       propertyPath: Armor
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7548052034012999246, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
       propertyPath: MaxHealth
