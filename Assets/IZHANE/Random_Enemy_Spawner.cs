@@ -21,7 +21,8 @@ public class Random_Enemy_Spawner : MonoBehaviour
     //IZHANE
     private void Start()
     {
-        StartCoroutine(Spawner());   
+        InvokeRepeating("SpawnEnemy", 1f, 10f);
+        //StartCoroutine(Spawner());   
     }
 
     private IEnumerator Spawner()
@@ -40,21 +41,22 @@ public class Random_Enemy_Spawner : MonoBehaviour
     //CADE
     void SpawnEnemy()
     {
+        print("spawn!");
         float randomXPosition = Random.Range(-valueX, valueX);
         float randomYPosition = Random.Range(-valueY, valueY);
         Vector3 spawnPosition = new Vector3(randomXPosition, randomYPosition, 0);
-        Instantiate(enemyToSpawn, spawnPosition, new Quaternion());
+        Instantiate(enemyPrefabs[0], spawnPosition, new Quaternion());
     }
     //IZHANE
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            int randEnemy = Random.Range(0, enemyPrefabs.Length);
-            int randSpawnPoint = Random.Range(0, spawnPoint.Length);
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    int randEnemy = Random.Range(0, enemyPrefabs.Length);
+        //    int randSpawnPoint = Random.Range(0, spawnPoint.Length);
 
-            Instantiate(enemyPrefabs[randEnemy], spawnPoint[randSpawnPoint].position, transform.rotation);
-        }
+        //    Instantiate(enemyPrefabs[randEnemy], spawnPoint[randSpawnPoint].position, transform.rotation);
+        //}
     }
 }
 

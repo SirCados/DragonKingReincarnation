@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &31479931
 Transform:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31479930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 9.95, z: 0.2812002}
+  m_LocalPosition: {x: 0.98, y: 0.1, z: 0.2812002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -310,8 +310,8 @@ MonoBehaviour:
   - {fileID: 789759295}
   - {fileID: 1082844197}
   - {fileID: 1994516222}
-  valueX: 10
-  valueY: 10
+  valueX: 100
+  valueY: 100
 --- !u!4 &218614929
 Transform:
   m_ObjectHideFlags: 0
@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218614927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.01, y: 11.93, z: 0.26740992}
+  m_LocalPosition: {x: -3.01, y: 3.09, z: 0.26740992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -348,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &245343179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +365,8 @@ MonoBehaviour:
   pigPrefab: {fileID: 1557454460780963294, guid: 0e8b3732a4448c04395fbb0d64847e2e, type: 3}
   orcInterval: 10
   pigInterval: 3.5
+  valueX: 100
+  valueY: 100
 --- !u!4 &245343180
 Transform:
   m_ObjectHideFlags: 0
