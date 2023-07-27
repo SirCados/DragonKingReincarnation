@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="StartMenu" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; max-height: 500px; max-width: 550px; height: 608px; width: 800px;">
+        <ui:Button text="Options" display-tooltip-when-elided="true" name="start" style="width: 160px; height: 40px; bottom: 300px; top: 300px; left: 200px; right: 165px; white-space: nowrap;" />
+        <ui:Button text="Quit" display-tooltip-when-elided="true" name="options" style="width: 160px; height: 40px; bottom: 300px; top: 380px; left: 32px; right: 0; white-space: nowrap;" />
+        <ui:Button text="Start" display-tooltip-when-elided="true" name="quit" style="width: 160px; height: 40px; bottom: 300px; top: 220px; left: -136px; right: 0; white-space: nowrap;" />
+    </ui:VisualElement>
+</ui:UXML>

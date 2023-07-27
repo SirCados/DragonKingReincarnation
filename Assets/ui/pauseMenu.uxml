@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:Button text="Resume" display-tooltip-when-elided="true" name="resume" style="width: 178px; position: relative; left: 85px; top: 150px;" />
+        <ui:Button text="Options" display-tooltip-when-elided="true" name="options" style="width: 179px; top: 200px; left: 85px;" />
+    </ui:VisualElement>
+</ui:UXML>
