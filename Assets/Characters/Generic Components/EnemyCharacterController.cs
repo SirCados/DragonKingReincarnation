@@ -242,7 +242,11 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
 
     IEnumerator ProcessTimedState(float time, State stateToChangeTo)
     {       
-        yield return new WaitForSeconds(time);   
+        yield return new WaitForSeconds(time); 
+        if(_currentState == _armoredState)
+        {
+            _hurtbox.ToggleArmorColorOn(false);
+        }
         ChangeState(stateToChangeTo);
         CharacterStateEngine();
     }

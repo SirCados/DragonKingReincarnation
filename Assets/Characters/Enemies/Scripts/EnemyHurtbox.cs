@@ -49,7 +49,7 @@ public class EnemyHurtbox : MonoBehaviour, IHurtbox
         {
             IsArmorTooMuch = true;
             
-            //ToggleArmorColorOn(true);
+            ToggleArmorColorOn(true);
             _damageToTake = 0;
         }
         else
