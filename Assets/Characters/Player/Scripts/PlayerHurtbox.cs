@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerHurtbox : MonoBehaviour, IHurtbox
 {
-    public bool IsDead;
+    bool _isOutOfHealth;
 
-    [SerializeField] CharacterAttributes _character;
+    bool _isRecoiling = false;
+    int _damageTaken;
+    CharacterAttributes _character;
     [SerializeField] GameObject _corpseSprite;
 
     private void Awake()
@@ -14,12 +16,7 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
         SetupEnemyHurtbox();
     }
 
-    private void LateUpdate()
-    {
-        CheckIfDead();
-    }
-
-    public void CheckIfDead()
+    public void ToggleCorpse()
     {
         if (IsDead && _corpseSprite != null)
         {
@@ -45,4 +42,26 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
             IsDead = true;
         }
     }
+
+    public void ToggleArmorColorOn(bool isArmorTooMuch)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool IsRecoiling
+    {
+        get => _isRecoiling;
+        set => _isRecoiling = value;
+    }
+    public bool IsDead
+    {
+        get => _isOutOfHealth;
+        set => _isOutOfHealth = value;
+    }
+
+    public int DamageTaken
+    {
+        get => _damageTaken;
+    }
+    public bool IsArmorTooMuch { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 }

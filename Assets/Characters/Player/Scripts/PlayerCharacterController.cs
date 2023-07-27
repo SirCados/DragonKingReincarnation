@@ -110,8 +110,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         if (_movementVector != Vector2.zero)
         {
             Vector3 directionVector = new Vector3(_movementVector.x, _movementVector.y, 0).normalized;
-            Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
-            print(movement);
+            Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;            
             transform.Translate(movement);
         }
         else
