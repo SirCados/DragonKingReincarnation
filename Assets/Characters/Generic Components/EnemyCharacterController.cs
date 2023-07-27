@@ -1,26 +1,29 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class PlayerCharacterController : CharacterStateController, IAttacker
+public class EnemyCharacterController : CharacterStateController, IAttacker, IMobileEnemy
 {
     public bool IsDead = false;
+
     public string StateTracker;
 
-    bool _isAttacking = false;
     Animator _animator;
     CharacterAttributes _attributes;
     Hitbox _hitbox;
-    Vector2 _movementVector; //Input from Player Inputs component. Look for OnMove function in this script
-    Vector2 _storedMovementVector; //Input from Player Inputs component if not in a moving state. Look for OnMove function in this script
+    IHurtbox _hurtbox;
+    TargetDetector _attackRangeDetector;
+    TargetDetector _targetDectector;
 
     //States
     AttackState _attackState;
     RecoveryState _attackRecoveryState;
     IdleState _idleState;
-    PlayerMoveState _moveState;
+    ChaseState _chaseState;
     HurtState _hurtState;
     WindupState _windupState;
+
+    bool _isAttacking = false;
 
     void Start()
     {
@@ -33,8 +36,11 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         _attributes = GetComponent<CharacterAttributes>();
         _hitbox = GetComponentInChildren<Hitbox>();
         _hitbox.gameObject.SetActive(false);
+        _hurtbox = GetComponent<IHurtbox>();
+        _attackRangeDetector = _hitbox.GetComponentInParent<TargetDetector>();
+        _targetDectector = GetComponentInChildren<TargetDetector>();
         _idleState = new IdleState();
-        _moveState = new PlayerMoveState();
+        _chaseState = new ChaseState();
         _hurtState = new HurtState();
         _windupState = new WindupState();
         _attackRecoveryState = new RecoveryState();
@@ -44,11 +50,11 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     }
     void Update()
     {
-        if (_currentState == _idleState || _currentState == _moveState)
+        if (_currentState == _idleState || _currentState == _chaseState)
         {
             _isAttacking = false;
-            CharacterStateEngine();
         }
+        CheckForTarget();
         StateTracker = _currentState.ToString();
     }
 
@@ -62,10 +68,10 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
                 _animator.SetBool("isWalking", false);
                 _animator.SetBool("isIdle", true);
                 break;
-            case PlayerMoveState:
+            case ChaseState:
                 _animator.SetBool("isIdle", false);
                 _animator.SetBool("isWalking", true);
-                MovePlayer();
+                MoveToTarget(_targetDectector.TargetPosition);
                 break;
             case WindupState:
                 Windup();
@@ -83,50 +89,24 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         StateControllerUpdate();
     }
 
-    void OnMove(InputValue movementValue)
+    void CheckForTarget()
     {
-        if (_currentState == _hurtState || _isAttacking)
-        {
-            _movementVector = Vector2.zero;
-            _storedMovementVector = movementValue.Get<Vector2>();
-        }
-        else if (!_isAttacking)
-        {
-            _storedMovementVector = Vector2.zero;
-            _movementVector = movementValue.Get<Vector2>();
-            ChangeState(_moveState);
-            CharacterStateEngine();
-        }
-    }
-
-    void MovePlayer()
-    {
-        if (_storedMovementVector != Vector2.zero)
-        {
-            _movementVector = _storedMovementVector;
-            _storedMovementVector = Vector2.zero;
-        }
-
-        if (_movementVector != Vector2.zero)
-        {
-            Vector3 directionVector = new Vector3(_movementVector.x, _movementVector.y, 0).normalized;
-            Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
-            print(movement);
-            transform.Translate(movement);
-        }
-        else
-        {
-            ChangeState(_idleState);
-        }
-    }
-
-    void OnFire()
-    {
-        if (!_isAttacking)
+        if (_attackRangeDetector.IsDetecting && !_isAttacking && _currentState == _chaseState)
         {
             _isAttacking = true;
-            _storedMovementVector = _movementVector;
             ChangeState(_windupState);
+            CharacterStateEngine();
+        }
+        else if (_targetDectector.IsDetecting && !_isAttacking)
+        {
+            if (_currentState != _chaseState)
+            {
+                ChangeState(_chaseState);
+            }
+        }
+
+        if (_currentState == _chaseState)
+        {
             CharacterStateEngine();
         }
     }
@@ -142,26 +122,46 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     {
         _animator.SetBool("isWindup", false);
         _animator.SetBool("isAttacking", true);
-        StartCoroutine(ProcessAttack(.2f, _attackRecoveryState));
+        StartCoroutine(ProcessAttack(.15f, _attackRecoveryState));
     }
 
     public void Recover()
     {
         _animator.SetBool("isAttacking", false);
         _animator.SetBool("isRecovering", true);
-        if (_storedMovementVector != Vector2.zero)
-        {
-            StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _moveState));
-        }
-        else
-        {
-            StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _idleState));
-        }
+        StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _idleState));
+    }
+
+    public void BeIdle()
+    {
+        throw new System.NotImplementedException();
     }
 
     public int GetAttackDamage()
     {
         return _attributes.AttackDamage;
+    }
+
+    public void GoToSleep()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void LookForTarget(Vector3 lastPositionOfTarget)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void MoveToTarget(Vector3 targetPosition)
+    {
+        float targetDirectionX = targetPosition.x - transform.position.x;
+        float targetDirectionY = targetPosition.y - transform.position.y;
+        Vector3 movementVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
+        Vector3 movement = movementVector * _attributes.MovementSpeed * Time.deltaTime;
+
+        _animator.SetFloat("xDirection", movementVector.x);
+        _animator.SetFloat("yDirection", movementVector.y);
+        transform.Translate(movement);
     }
 
     public void SpawnProjectile(GameObject projectileToSpawn)

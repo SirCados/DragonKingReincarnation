@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCharacterController : CharacterStateController, IAttacker
+public class PlayerCharacterControllerTwo : CharacterStateController, IAttacker
 {
     public bool IsDead = false;
     public string StateTracker;
@@ -11,6 +11,8 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     Animator _animator;
     CharacterAttributes _attributes;
     Hitbox _hitbox;
+    TargetDetector _attackRangeDetector;
+    TargetDetector _targetDectector;
     Vector2 _movementVector; //Input from Player Inputs component. Look for OnMove function in this script
     Vector2 _storedMovementVector; //Input from Player Inputs component if not in a moving state. Look for OnMove function in this script
 
@@ -21,7 +23,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     PlayerMoveState _moveState;
     HurtState _hurtState;
     WindupState _windupState;
-
+    
     void Start()
     {
         SetupEnemyCharacterController();
@@ -50,7 +52,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
             CharacterStateEngine();
         }
         StateTracker = _currentState.ToString();
-    }
+    }   
 
     void CharacterStateEngine()
     {
@@ -90,7 +92,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
             _movementVector = Vector2.zero;
             _storedMovementVector = movementValue.Get<Vector2>();
         }
-        else if (!_isAttacking)
+        else if(!_isAttacking)
         {
             _storedMovementVector = Vector2.zero;
             _movementVector = movementValue.Get<Vector2>();
@@ -105,6 +107,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         {
             _movementVector = _storedMovementVector;
             _storedMovementVector = Vector2.zero;
+            print("stored");
         }
 
         if (_movementVector != Vector2.zero)
@@ -149,7 +152,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     {
         _animator.SetBool("isAttacking", false);
         _animator.SetBool("isRecovering", true);
-        if (_storedMovementVector != Vector2.zero)
+        if(_storedMovementVector != Vector2.zero)
         {
             StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _moveState));
         }
@@ -163,7 +166,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     {
         return _attributes.AttackDamage;
     }
-
+    
     public void SpawnProjectile(GameObject projectileToSpawn)
     {
         throw new System.NotImplementedException();
@@ -176,3 +179,4 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         CharacterStateEngine();
     }
 }
+

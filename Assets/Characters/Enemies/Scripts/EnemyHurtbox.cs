@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyHurtbox : MonoBehaviour, IHurtbox
 {
     public bool IsDead;
+    public bool IsRecoiling = false;
 
     [SerializeField] CharacterAttributes _character;
     [SerializeField] GameObject _corpseSprite;
@@ -33,6 +34,7 @@ public class EnemyHurtbox : MonoBehaviour, IHurtbox
 
     public void TakeHurt(int damageToTake)
     {
+        IsRecoiling = true;
         _character.CurrentHealth -= damageToTake;
         print("ow!");
 
