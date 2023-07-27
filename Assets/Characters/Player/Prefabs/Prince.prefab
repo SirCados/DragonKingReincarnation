@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 6556111716075783305}
   - component: {fileID: 3022683175766768871}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Prince
   m_TagString: PlayerHurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
