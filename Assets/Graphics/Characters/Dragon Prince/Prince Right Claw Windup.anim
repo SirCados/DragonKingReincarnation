@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pig Right Recoil
+  m_Name: Prince Right Claw Windup
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1989580741, guid: 8def4b56921f6ad4b91fe3c1f8b9db57, type: 3}
-    - time: 0.016666668
-      value: {fileID: -415879650, guid: 7721e67dbe07f3f448f458d130953133, type: 3}
+      value: {fileID: 539318679, guid: 56be0c12788f75b4896f340f00f4ed95, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,14 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1989580741, guid: 8def4b56921f6ad4b91fe3c1f8b9db57, type: 3}
-    - {fileID: -415879650, guid: 7721e67dbe07f3f448f458d130953133, type: 3}
+    - {fileID: 539318679, guid: 56be0c12788f75b4896f340f00f4ed95, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.033333335
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

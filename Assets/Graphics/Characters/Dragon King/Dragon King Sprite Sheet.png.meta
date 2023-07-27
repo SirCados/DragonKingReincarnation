@@ -1,0 +1,1047 @@
+fileFormatVersion: 2
+guid: b0a9501d551d1e145bededd466bda21c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 825
+        width: 117
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa067373b191c8c438f0ec6d35f20139
+      internalID: -1981148148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 827
+        width: 117
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a242bdb870db6a41a66d7c7c0b45bcf
+      internalID: -1302163575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 826
+        width: 123
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2b043fcfd971448924ae72e25b0dc6
+      internalID: 221298818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 826
+        width: 118
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f6cf79bae4e144fb960c348427fbbb
+      internalID: 707307616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 825
+        width: 120
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e980f13ba265df04799f0f242bbe500b
+      internalID: -2113978211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 827
+        width: 120
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28ef774be5bb89439a0a17859a76d3e
+      internalID: 148608379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 825
+        width: 115
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef5c6a7e147f4d4a83cc4b8e61f7b53
+      internalID: -475892241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 827
+        width: 158
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9d4a32f7347a04fab8d1175487340a
+      internalID: -1774629283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 830
+        width: 133
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc529ccfcb23314586393018ae236b6
+      internalID: 111515861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 835
+        width: 129
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d8d28021e2e19498a97e06a287dece
+      internalID: 1104146149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 628
+        width: 81
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 386652aeaf7bd9b4aa0c12a231c61b5e
+      internalID: -82094748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 632
+        width: 78
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1dd4c1b9add9da4698c212f3f3fa77b
+      internalID: 987696743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 628
+        width: 77
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33aba70cbec04874aa895c78120cf555
+      internalID: -735549169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 630
+        width: 80
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37462355d42c60f4e9759f0032077110
+      internalID: -1541325953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 630
+        width: 78
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f5df3b204e726a49aaa330c9e548993
+      internalID: -970301904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 631
+        width: 77
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d413df29bd8fee4fbc245e85512b55b
+      internalID: 1166257823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 628
+        width: 77
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f7de18a552b574ba3351dc88b75046
+      internalID: -1692151145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 615
+        width: 77
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af62cac04ac25544af40b1989c48342
+      internalID: 1491021266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 626
+        width: 77
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4ca2665a16b47d408bb1fef543399e3
+      internalID: -2002764173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 626
+        width: 77
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a76b13c84e322e46a9ab3680834e01c
+      internalID: 213424161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 447
+        width: 117
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d246b22add4aa04a812d76625e4b470
+      internalID: -37118375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 448
+        width: 117
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417fd989210d6c34685ab7ab91d09ca6
+      internalID: -2037176927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 447
+        width: 123
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d973910e3f6cf40b9ba32267cc4672
+      internalID: 196955279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 447
+        width: 118
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7bbf4d350e06dc499846ac197ca8eea
+      internalID: 699626262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 447
+        width: 120
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca94fffc7ebb9b4e8089ac3c4f79acf
+      internalID: -977564902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 447
+        width: 120
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bde9a4015a4de514582c6ac432a34d71
+      internalID: 1993949864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 447
+        width: 115
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da4b9fecb0fa1514ebac20fcdb4d9369
+      internalID: 658091049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 447
+        width: 158
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36800907781c70f4da0b2d16b7794557
+      internalID: 433531698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 447
+        width: 133
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660e08a9eb5547c47bda9b5d2ddf44f5
+      internalID: 847696105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 447
+        width: 129
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ced894d096e9742b59f36ecffae02f
+      internalID: -309544509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 222
+        width: 77
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9340bde07e412d84d8a88b3faaf980fc
+      internalID: 2099031297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 225
+        width: 77
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a1d8ff149e1fa49a80e9c1e018e354
+      internalID: -1503807298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 228
+        width: 77
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b4c52df6de5928489c5543a0173e81c
+      internalID: -120658981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 226
+        width: 77
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46b2558990ceb7449bb28c061eca3da9
+      internalID: -891466591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 223
+        width: 77
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d11ea296e7341c94ab447db9a4b9419f
+      internalID: -1739961177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 225
+        width: 77
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ab9c15c49c4ec46937b1cb9769eec5
+      internalID: 291410921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 223
+        width: 88
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c320311a7bc79429feb84049f4b863
+      internalID: -1154444513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 213
+        width: 84
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41b0b51a67ddd8b4d85efe46616449cf
+      internalID: 1642409485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 223
+        width: 77
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a0625a0b52829489ff9062480230f6
+      internalID: 1577869253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 225
+        width: 77
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89946ffc194525141b832503d170dc88
+      internalID: -1283780151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 63
+        width: 138
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed07ef3dbd949d3459452540eeb4f0ce
+      internalID: -833439214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon King Sprite Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 31
+        width: 111
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168a366f59348634985e3d8d3b173978
+      internalID: 77576174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Dragon King Sprite Sheet_26: 658091049
+      Dragon King Sprite Sheet_9: 1104146149
+      Dragon King Sprite Sheet_34: -1739961177
+      Dragon King Sprite Sheet_35: 291410921
+      Dragon King Sprite Sheet_38: 1577869253
+      Dragon King Sprite Sheet_31: -1503807298
+      Dragon King Sprite Sheet_11: 987696743
+      Dragon King Sprite Sheet_0: -1981148148
+      Dragon King Sprite Sheet_5: 148608379
+      Dragon King Sprite Sheet_22: 196955279
+      Dragon King Sprite Sheet_33: -891466591
+      Dragon King Sprite Sheet_41: 77576174
+      Dragon King Sprite Sheet_23: 699626262
+      Dragon King Sprite Sheet_4: -2113978211
+      Dragon King Sprite Sheet_6: -475892241
+      Dragon King Sprite Sheet_29: -309544509
+      Dragon King Sprite Sheet_8: 111515861
+      Dragon King Sprite Sheet_40: -833439214
+      Dragon King Sprite Sheet_1: -1302163575
+      Dragon King Sprite Sheet_10: -82094748
+      Dragon King Sprite Sheet_2: 221298818
+      Dragon King Sprite Sheet_17: 1491021266
+      Dragon King Sprite Sheet_20: -37118375
+      Dragon King Sprite Sheet_13: -1541325953
+      Dragon King Sprite Sheet_28: 847696105
+      Dragon King Sprite Sheet_32: -120658981
+      Dragon King Sprite Sheet_7: -1774629283
+      Dragon King Sprite Sheet_16: -1692151145
+      Dragon King Sprite Sheet_36: -1154444513
+      Dragon King Sprite Sheet_37: 1642409485
+      Dragon King Sprite Sheet_12: -735549169
+      Dragon King Sprite Sheet_30: 2099031297
+      Dragon King Sprite Sheet_15: 1166257823
+      Dragon King Sprite Sheet_39: -1283780151
+      Dragon King Sprite Sheet_3: 707307616
+      Dragon King Sprite Sheet_18: -2002764173
+      Dragon King Sprite Sheet_24: -977564902
+      Dragon King Sprite Sheet_19: 213424161
+      Dragon King Sprite Sheet_14: -970301904
+      Dragon King Sprite Sheet_27: 433531698
+      Dragon King Sprite Sheet_25: 1993949864
+      Dragon King Sprite Sheet_21: -2037176927
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
