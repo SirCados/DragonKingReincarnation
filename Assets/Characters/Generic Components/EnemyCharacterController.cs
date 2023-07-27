@@ -83,7 +83,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         {
             _isAttacking = false;
         }
-        //need to switch to IsInputBlockedExternally || _isInputBlockedInternally, checking this way is untenable
+        //TODO: need to switch to IsInputBlockedExternally || _isInputBlockedInternally, checking this way is untenable
         if (_currentState != _hurtState && _currentState != _armoredState)
         {
             print("looking " + _currentState);
@@ -95,7 +95,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     void CharacterStateEngine()
     {
         //could I use delegates in constructor of states once all of my states are determined?
-        //once the game states are established, this can be put in the parent class and called any time state is changed
+        //TODO: once the game states are established, this can be put in the parent class and called any time state is changed
         switch (_currentState)
         {
             case IdleState:
@@ -189,7 +189,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
 
         _animator.SetBool("isHurt", true);
         print("damage taken: " + _hurtbox.DamageTaken);
-        StartCoroutine(ProcessTimedState((_hurtbox.DamageTaken), _idleState));
+        StartCoroutine(ProcessTimedState((.5f), _idleState));
     }
 
     public void Armored()
@@ -241,7 +241,8 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     }
 
     IEnumerator ProcessTimedState(float time, State stateToChangeTo)
-    {       
+    {   
+        //TODO: Add to state controller class when adding state machine to it
         yield return new WaitForSeconds(time); 
         if(_currentState == _armoredState)
         {
