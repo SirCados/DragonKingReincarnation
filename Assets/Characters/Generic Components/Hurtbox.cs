@@ -56,7 +56,7 @@ public class Hurtbox : MonoBehaviour, IHurtbox
         _attributes = GetComponentInParent<CharacterAttributes>();        
     }
 
-    public void TakeHurt(int incomingDamage)
+    public void TakeHurt(int incomingDamage, bool isSpecial)
     {
         if (!_isEaten && !_isCorpse)
         {
@@ -81,7 +81,7 @@ public class Hurtbox : MonoBehaviour, IHurtbox
                 }
             }
         }
-        else
+        else if(isSpecial)
         {
             ToggleEaten();
         }

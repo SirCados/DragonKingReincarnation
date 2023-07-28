@@ -47,7 +47,7 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
         _attributes = GetComponentInParent<CharacterAttributes>();
     }
 
-    public void TakeHurt(int incomingDamage)
+    public void TakeHurt(int incomingDamage, bool isSpecial)
     {
         _damageToTake = incomingDamage - _attributes.Armor;
         if (_damageToTake < 1)
@@ -67,6 +67,7 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
             {
                 _attributes.CurrentHealth = 0;
                 IsDead = true;
+                ToggleCorpse();
             }
 
             print("Current: " + _attributes.CurrentHealth);

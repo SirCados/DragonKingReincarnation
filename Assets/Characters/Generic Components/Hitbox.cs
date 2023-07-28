@@ -38,12 +38,12 @@ public class Hitbox : MonoBehaviour
                     print("om nom nom");
                     _attacker.RecievePower(hurtboxToHit.GivePoints);
                 }
-                hurtboxToHit.TakeHurt(_attacker.GetAttackDamage());
+                hurtboxToHit.TakeHurt(_attacker.GetAttackDamage(), _attacker.IsSpecial);
 
             }
             else
             {
-                hurtboxToHit.TakeHurt(_attacker.GetAttackDamage());
+                hurtboxToHit.TakeHurt(_attacker.GetAttackDamage(), _attacker.IsSpecial);
             }
             
             HasAttackHit = true;
