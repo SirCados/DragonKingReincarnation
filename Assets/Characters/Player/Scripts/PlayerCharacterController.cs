@@ -29,6 +29,10 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     bool _isBiting = false;
     public bool IsDead;
 
+    public GameObject ControlDisplay;
+    bool _activeControls = true;
+
+
     int attackPower = 1;
 
     void Start()
@@ -64,6 +68,11 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         {
             UpdatePlayerCharacter();
             OnBite();
+            if (!_isAttacking && Input.GetKeyDown(KeyCode.C))
+            {
+                _activeControls = !_activeControls;
+                ControlDisplay.SetActive(_activeControls);
+            }
         }
         else
         {
