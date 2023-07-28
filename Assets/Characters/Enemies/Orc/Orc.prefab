@@ -242,7 +242,7 @@ MonoBehaviour:
   AttackDamage: 10
   CurrentHealth: 0
   MaxHealth: 40
-  PointsOfPower: 10
+  PointsOfPower: 1
 --- !u!114 &7336664488278768037
 MonoBehaviour:
   m_ObjectHideFlags: 0
