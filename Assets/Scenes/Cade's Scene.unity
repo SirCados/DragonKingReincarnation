@@ -844,10 +844,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 822243371635425901, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5910492150246924616, guid: 853cdb09e5ad84442a618985dea85747, type: 3}
       propertyPath: m_Name
       value: Orc
