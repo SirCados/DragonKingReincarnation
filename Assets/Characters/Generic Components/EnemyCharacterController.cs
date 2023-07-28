@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyCharacterController : CharacterStateController, IAttacker, IMobileEnemy
 {
-    public bool IsDead = false;
-
     public string StateTracker;
 
     Animator _animator;
@@ -22,6 +20,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     ChaseState _chaseState;
     HurtState _hurtState;
     WindupState _windupState;
+    ArmoredState _armoredState;
 
     bool _isAttacking = false;
 
@@ -45,28 +44,58 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         _windupState = new WindupState();
         _attackRecoveryState = new RecoveryState();
         _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
+        _armoredState = new ArmoredState();
 
         ChangeState(_idleState);
     }
     void Update()
     {
+        if (_hurtbox.IsDead)
+        {
+            _hurtbox.ToggleCorpse();
+        }
+        else
+        {
+            UpdateEnemyCharacter();
+        }        
+    }
+
+    void UpdateEnemyCharacter()
+    {
+        if (_hurtbox.IsRecoiling)
+        {
+            _hurtbox.IsRecoiling = false;
+            ChangeState(_hurtState);
+            CharacterStateEngine();
+        }
+
+        if (_hurtbox.IsArmorTooMuch)
+        {
+            _hurtbox.IsArmorTooMuch = false;
+            ChangeState(_armoredState);
+            CharacterStateEngine();
+        }
+
         if (_currentState == _idleState || _currentState == _chaseState)
         {
             _isAttacking = false;
         }
-        CheckForTarget();
+        //TODO: need to switch to IsInputBlockedExternally || _isInputBlockedInternally, checking this way is untenable
+        if (_currentState != _hurtState && _currentState != _armoredState)
+        {
+            CheckForTarget();
+        }
         StateTracker = _currentState.ToString();
     }
 
     void CharacterStateEngine()
     {
         //could I use delegates in constructor of states once all of my states are determined?
+        //TODO: once the game states are established, this can be put in the parent class and called any time state is changed
         switch (_currentState)
         {
             case IdleState:
-                _animator.SetBool("isRecovering", false);
-                _animator.SetBool("isWalking", false);
-                _animator.SetBool("isIdle", true);
+                BeIdle();
                 break;
             case ChaseState:
                 _animator.SetBool("isIdle", false);
@@ -83,6 +112,10 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
                 Recover();
                 break;
             case HurtState:
+                Hurt();
+                break;
+            case ArmoredState:
+                Armored();
                 break;
         }
 
@@ -111,30 +144,62 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         }
     }
 
+    public void BeIdle()
+    {
+
+        _animator.SetBool("isHurt", false);
+        _animator.SetBool("isRecovering", false);
+        _animator.SetBool("isWalking", false);
+        _animator.SetBool("isIdle", true);
+    }
+
     public void Windup()
     {
         _animator.SetBool("isWalking", false);
         _animator.SetBool("isWindup", true);
-        StartCoroutine(ProcessAttack(_attributes.AttackSpeed / 2, _attackState));
+        StartCoroutine(ProcessTimedState(_attributes.AttackSpeed / 2, _attackState));
     }
 
     public void Attack()
     {
         _animator.SetBool("isWindup", false);
         _animator.SetBool("isAttacking", true);
-        StartCoroutine(ProcessAttack(.15f, _attackRecoveryState));
+        StartCoroutine(ProcessTimedState(.15f, _attackRecoveryState));
     }
 
     public void Recover()
     {
         _animator.SetBool("isAttacking", false);
         _animator.SetBool("isRecovering", true);
-        StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _idleState));
+        StartCoroutine(ProcessTimedState(_attributes.AttackSpeed, _idleState));
     }
 
-    public void BeIdle()
+    public void Hurt()
     {
-        throw new System.NotImplementedException();
+        StopAllCoroutines();
+        _animator.SetBool("isIdle", false);
+        _animator.SetBool("isWalking", false);
+        _animator.SetBool("isWindup", false);
+        _animator.SetBool("isAttacking", false);
+        _animator.SetBool("isRecovering", false);
+
+        _animator.SetBool("isHurt", true);
+        StartCoroutine(ProcessTimedState((.5f), _idleState));
+    }
+
+    public void Armored()
+    {
+        StopAllCoroutines();
+        _animator.SetBool("isIdle", false);
+        _animator.SetBool("isWalking", false);
+        _animator.SetBool("isWindup", false);
+        _animator.SetBool("isAttacking", false);
+        _animator.SetBool("isRecovering", false);
+
+        _animator.SetBool("isHurt", true);
+        _animator.SetBool("isHurt", false);
+        _animator.SetBool("isIdle", true);
+        StartCoroutine(ProcessTimedState((.1f), _idleState));
     }
 
     public int GetAttackDamage()
@@ -156,11 +221,11 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     {
         float targetDirectionX = targetPosition.x - transform.position.x;
         float targetDirectionY = targetPosition.y - transform.position.y;
-        Vector3 movementVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
-        Vector3 movement = movementVector * _attributes.MovementSpeed * Time.deltaTime;
+        Vector3 directionVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
+        Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
 
-        _animator.SetFloat("xDirection", movementVector.x);
-        _animator.SetFloat("yDirection", movementVector.y);
+        _animator.SetFloat("xDirection", directionVector.x);
+        _animator.SetFloat("yDirection", directionVector.y);
         transform.Translate(movement);
     }
 
@@ -169,9 +234,14 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         throw new System.NotImplementedException();
     }
 
-    IEnumerator ProcessAttack(float time, State stateToChangeTo)
-    {
-        yield return new WaitForSeconds(time);
+    IEnumerator ProcessTimedState(float time, State stateToChangeTo)
+    {   
+        //TODO: Add to state controller class when adding state machine to it
+        yield return new WaitForSeconds(time); 
+        if(_currentState == _armoredState || _currentState == _hurtState)
+        {
+            _hurtbox.ToggleHitColorOn(false);
+        }
         ChangeState(stateToChangeTo);
         CharacterStateEngine();
     }

@@ -18,7 +18,6 @@ public class AttackState : State
 
     public override void OnEnterState()
     {
-        Debug.Log("hitbox active");
         _hitbox.gameObject.SetActive(true);
     }
  

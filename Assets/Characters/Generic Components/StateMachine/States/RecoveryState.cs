@@ -12,17 +12,13 @@ public class RecoveryState : State
 
     public override void OnEnterState()
     {
-        Debug.Log("enter recoveryState");
     }
 
     public override void OnUpdate()
-    {
-        
+    {        
     }
 
     public override void OnExitState()
     {
-
     }
-
 }
