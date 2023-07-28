@@ -215,22 +215,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2776301217889094237, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -833439214, guid: b0a9501d551d1e145bededd466bda21c, type: 3}
-    - target: {fileID: 2776301217889094237, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9577252
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776301217889094237, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9577252
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776301217889094237, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9622642
-      objectReference: {fileID: 0}
     - target: {fileID: 5910492150246924616, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
       propertyPath: m_Name
       value: Dragon King
@@ -241,11 +225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.501795
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -279,10 +263,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8206223536529200168, guid: 34202d9dce46e304da33f062ede89ce2, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -833439214, guid: b0a9501d551d1e145bededd466bda21c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -369,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2197200177176366828, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2197200177176366828, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
       propertyPath: m_LocalPosition.y
@@ -626,11 +606,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: e3baba4a8aa0f114d8748761b4755ffc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: e3baba4a8aa0f114d8748761b4755ffc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.24316692
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: e3baba4a8aa0f114d8748761b4755ffc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -735,11 +715,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: aeedcaf16a9eecb4b8f22b3604b4ede1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.212
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: aeedcaf16a9eecb4b8f22b3604b4ede1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7561038150789121514, guid: aeedcaf16a9eecb4b8f22b3604b4ede1, type: 3}
       propertyPath: m_LocalPosition.z

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1552631436, guid: 9c9b879242a3d664f93dac3f50f33845, type: 3}
+  m_Sprite: {fileID: -833439214, guid: b0a9501d551d1e145bededd466bda21c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackSpeed: 1
-  MovementSpeed: 15
+  MovementSpeed: 10
   Armor: 8
   AttackDamage: 50
   CurrentHealth: 0
@@ -388,7 +388,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
 --- !u!114 &4708028205167095314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,8 +477,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 801282859, guid: 9c9b879242a3d664f93dac3f50f33845, type: 3}
-  m_Color: {r: 0.6981132, g: 0.062566735, b: 0.062566735, a: 1}
+  m_Sprite: {fileID: -833439214, guid: b0a9501d551d1e145bededd466bda21c, type: 3}
+  m_Color: {r: 0.9622642, g: 0.9577252, b: 0.9577252, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -676,7 +676,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.5
 --- !u!1 &8970196215518841834
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +703,7 @@ Transform:
   m_GameObject: {fileID: 8970196215518841834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1882882870738798089}
