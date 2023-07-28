@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 822243371635425901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7561038150789121514}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1552631436, guid: 9c9b879242a3d664f93dac3f50f33845, type: 3}
+  m_Sprite: {fileID: -814968309, guid: 44e44f41e308cdf4aa95101f2bc1d2ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8351199077881358618}
   - component: {fileID: 4793464572736450015}
   m_Layer: 0
-  m_Name: Orc
+  m_Name: Bunny
   m_TagString: EnemyHurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ Transform:
   - {fileID: 1406532587648087439}
   - {fileID: 2061037066627077321}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2616967754157268796
 MonoBehaviour:
@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateTracker: 
-  IsRabbit: 0
-  IsFearless: 1
+  IsRabbit: 1
+  IsFearless: 0
 --- !u!114 &7548052034012999246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,13 +236,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71435e3911b536845bc7368abcad7390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 0.8
-  MovementSpeed: 8
-  Armor: 4
-  AttackDamage: 10
+  AttackSpeed: 0.3
+  MovementSpeed: 6
+  Armor: 0
+  AttackDamage: 0
   CurrentHealth: 0
-  MaxHealth: 40
-  PointsOfPower: 10
+  MaxHealth: 1
+  PointsOfPower: 1
 --- !u!114 &7336664488278768037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +319,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_Direction: 0
 --- !u!1 &6073623644444461695
 GameObject:
@@ -388,7 +388,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 8
 --- !u!114 &4708028205167095314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ Transform:
   m_GameObject: {fileID: 6360738196304593584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7561038150789121514}
@@ -477,8 +477,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 801282859, guid: 9c9b879242a3d664f93dac3f50f33845, type: 3}
-  m_Color: {r: 0.6981132, g: 0.062566735, b: 0.062566735, a: 1}
+  m_Sprite: {fileID: -679834262, guid: 44e44f41e308cdf4aa95101f2bc1d2ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -515,7 +515,7 @@ Transform:
   m_GameObject: {fileID: 7428671338100875248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.021775173}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7561038150789121514}
@@ -562,7 +562,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -177420505, guid: 9c9b879242a3d664f93dac3f50f33845, type: 3}
+  m_Sprite: {fileID: 1609177884, guid: 44e44f41e308cdf4aa95101f2bc1d2ac, type: 3}
   m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -583,7 +583,7 @@ Animator:
   m_GameObject: {fileID: 7428671338100875248}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7c94127aae60c5b40b660d8b0dc55c8e, type: 2}
+  m_Controller: {fileID: 9100000, guid: e4bee2ef5be820c46aa1206593287c89, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

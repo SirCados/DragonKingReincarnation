@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8351199077881358618}
   - component: {fileID: 4793464572736450015}
   m_Layer: 0
-  m_Name: Orc
+  m_Name: Dragon King
   m_TagString: EnemyHurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 5910492150246924616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.13, y: -0.24316692, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8390432313132917389}
@@ -207,7 +207,7 @@ Transform:
   - {fileID: 1406532587648087439}
   - {fileID: 2061037066627077321}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2616967754157268796
 MonoBehaviour:
@@ -236,13 +236,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71435e3911b536845bc7368abcad7390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 0.8
-  MovementSpeed: 8
-  Armor: 4
-  AttackDamage: 10
+  AttackSpeed: 1
+  MovementSpeed: 15
+  Armor: 8
+  AttackDamage: 50
   CurrentHealth: 0
-  MaxHealth: 40
-  PointsOfPower: 10
+  MaxHealth: 200
+  PointsOfPower: 100
 --- !u!114 &7336664488278768037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 3
 --- !u!114 &4708028205167095314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,7 +515,7 @@ Transform:
   m_GameObject: {fileID: 7428671338100875248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.021775173}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7561038150789121514}
@@ -562,7 +562,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -177420505, guid: 9c9b879242a3d664f93dac3f50f33845, type: 3}
+  m_Sprite: {fileID: -82094748, guid: b0a9501d551d1e145bededd466bda21c, type: 3}
   m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -583,7 +583,7 @@ Animator:
   m_GameObject: {fileID: 7428671338100875248}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7c94127aae60c5b40b660d8b0dc55c8e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 321b14612fbb53e4289159cd2e31e0d1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -676,7 +676,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!1 &8970196215518841834
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +703,7 @@ Transform:
   m_GameObject: {fileID: 8970196215518841834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1882882870738798089}

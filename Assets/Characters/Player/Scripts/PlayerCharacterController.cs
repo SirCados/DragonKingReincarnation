@@ -51,6 +51,8 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         _armoredState = new ArmoredState();
         _bitingState = new BitingState();
 
+        print("stats: " + _attributes.MovementSpeed);
+
         ChangeState(_idleState);
     }
     void Update()
