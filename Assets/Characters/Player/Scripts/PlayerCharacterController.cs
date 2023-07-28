@@ -29,6 +29,8 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     bool _isBiting = false;
     public bool IsDead;
 
+    int attackPower = 1;
+
     void Start()
     {
         SetupPlayerCharacterController();
@@ -130,6 +132,16 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         }
 
         StateControllerUpdate();
+    }
+
+    public void GainPower()
+    {
+        attackPower++;
+        _attributes.AttackSpeed -= 0.03f;        
+        _attributes.AttackDamage += 1;
+        _attributes.MaxHealth += 5;
+        _attributes.Armor = _attributes.MaxHealth/20;        
+        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
     }
 
 
@@ -314,5 +326,6 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     public void RecievePower(int points)
     {
         _attributes.PointsOfPower += points;
+        GainPower();
     }
 }
