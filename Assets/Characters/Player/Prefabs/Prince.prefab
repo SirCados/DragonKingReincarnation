@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535210854322104634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -150,7 +150,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.2}
-  m_Size: {x: 1.2, y: 2.1}
+  m_Size: {x: 0.4, y: 0.8}
   m_Direction: 0
 --- !u!114 &4811098877371328700
 MonoBehaviour:
@@ -167,6 +167,7 @@ MonoBehaviour:
   _corpseSprite: {fileID: 6882077624679800915}
   _sprite: {fileID: 8583902998632446334}
   _eatenSprite: {fileID: 6882077624679800915}
+  HealthBar: {fileID: 0}
 --- !u!50 &4260353927089072410
 Rigidbody2D:
   serializedVersion: 4
@@ -263,7 +264,7 @@ Transform:
   - {fileID: 5085271349343772870}
   - {fileID: 3340575150800895008}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3854620493654950883
 MonoBehaviour:
@@ -308,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateTracker: 
+  IsDead: 0
 --- !u!114 &6556111716075783305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +622,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9811321, g: 0.96724814, b: 0.96724814, a: 0.078431375}
   m_FlipX: 0

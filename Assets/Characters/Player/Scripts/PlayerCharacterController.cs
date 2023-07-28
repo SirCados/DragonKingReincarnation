@@ -23,11 +23,13 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     HurtState _hurtState;
     ClawingState _clawingState;
     BitingState _bitingState;
-    ArmoredState _armoredState;
+    ArmoredState _armoredState;    
 
     bool _isAttacking = false;
     bool _isBiting = false;
     public bool IsDead;
+
+    int attackPower = 1;
 
     void Start()
     {
@@ -132,6 +134,16 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         StateControllerUpdate();
     }
 
+    public void GainPower()
+    {
+        attackPower++;
+        _attributes.AttackSpeed -= 0.03f;        
+        _attributes.AttackDamage += 1;
+        _attributes.MaxHealth += 5;
+        _attributes.Armor = _attributes.MaxHealth/20;        
+        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+    }
+
 
     public void BeIdle()
     {
@@ -182,7 +194,6 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         _animator.SetBool("isRecovering", false);
 
         _animator.SetBool("isHurt", true);
-        print("damage taken: " + _hurtbox.DamageTaken);
         StartCoroutine(ProcessTimedState((.5f), _idleState));
     }
 
@@ -314,5 +325,6 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     public void RecievePower(int points)
     {
         _attributes.PointsOfPower += points;
+        GainPower();
     }
 }
