@@ -21,7 +21,7 @@ public class Random_Enemy_Spawner : MonoBehaviour
     //IZHANE
     private void Start()
     {
-        InvokeRepeating("SpawnEnemy", 1f, 10f);
+        InvokeRepeating("SpawnEnemy", 1f, 3f);
         //StartCoroutine(Spawner());   
     }
 
