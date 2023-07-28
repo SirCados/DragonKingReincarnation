@@ -11,6 +11,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     Animator _animator;
     CharacterAttributes _attributes;
     Hitbox _hitbox;
+    IHurtbox _hurtbox;
     TargetDetector _attackRangeDetector;
     TargetDetector _targetDectector;
 
@@ -35,6 +36,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         _attributes = GetComponent<CharacterAttributes>();
         _hitbox = GetComponentInChildren<Hitbox>();
         _hitbox.gameObject.SetActive(false);
+        _hurtbox = GetComponent<IHurtbox>();
         _attackRangeDetector = _hitbox.GetComponentInParent<TargetDetector>();
         _targetDectector = GetComponentInChildren<TargetDetector>();
         _idleState = new IdleState();
