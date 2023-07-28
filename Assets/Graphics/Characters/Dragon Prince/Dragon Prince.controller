@@ -245,7 +245,7 @@ AnimatorStateMachine:
     m_Position: {x: -900, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2790540051426656622}
-    m_Position: {x: -370, y: -60, z: 0}
+    m_Position: {x: -450, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7642409892952750760}
     m_Position: {x: 110, y: -140, z: 0}
@@ -333,7 +333,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 540, y: 200, z: 0}
-  m_EntryPosition: {x: 120, y: -40, z: 0}
+  m_EntryPosition: {x: 120, y: 0, z: 0}
   m_ExitPosition: {x: 490, y: 130, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 695780811715653010}
@@ -1602,7 +1602,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isClawing
+    m_ConditionEvent: isBiting
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7739901441439898660}
@@ -2460,7 +2460,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isClawing
+    m_ConditionEvent: isBiting
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7739901441439898660}
@@ -2564,7 +2564,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: xDirection
-    m_EventTreshold: -0.7
+    m_EventTreshold: -0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2790540051426656622}
   m_Solo: 0
@@ -3096,7 +3096,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: xDirection
-    m_EventTreshold: -0.7
+    m_EventTreshold: -0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2790540051426656622}
   m_Solo: 0
@@ -3121,7 +3121,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: xDirection
-    m_EventTreshold: -0.7
+    m_EventTreshold: -0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2790540051426656622}
   m_Solo: 0
@@ -3750,7 +3750,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: xDirection
-    m_EventTreshold: 0.7
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6462662839232048802}
   m_Solo: 0

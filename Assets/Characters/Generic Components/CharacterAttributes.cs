@@ -8,6 +8,7 @@ public class CharacterAttributes : MonoBehaviour
     public int AttackDamage;
     public int CurrentHealth;
     public int MaxHealth;
+    public int PointsOfPower;
 
     // Start is called before the first frame update
     void Start()

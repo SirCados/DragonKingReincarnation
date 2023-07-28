@@ -1,20 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHurtbox : MonoBehaviour, IHurtbox
+public class Hurtbox : MonoBehaviour, IHurtbox
 {
     bool _isOutOfHealth;
 
+    bool _isCorpse;
+    bool _isEaten;
+
     bool _isRecoiling = false;
     bool _isArmorTooMuch = false;
-    int _damageToTake;
-    bool _isCorpse = false;
-    bool _isEaten = false;
+    int _damageToTake; 
+    
     CharacterAttributes _attributes;
 
     [SerializeField] GameObject _corpseSprite;
     [SerializeField] GameObject _sprite;
-
     [SerializeField] GameObject _eatenSprite;
+    public int PointValue;
 
     SpriteRenderer _spriteRenderer;
     Color _defaultColor;
@@ -27,11 +31,17 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
 
     public void ToggleCorpse()
     {
-        if (IsDead && _corpseSprite != null)
-        {
-            _sprite.SetActive(false);
-            _corpseSprite.SetActive(true);
-        }
+        IsDead = true;
+        _isCorpse = true;
+        _sprite.SetActive(false);
+        _corpseSprite.SetActive(true);
+    }
+
+    public void ToggleEaten()
+    {
+        _isEaten = true;
+        _corpseSprite.SetActive(false);
+        _eatenSprite.SetActive(true);        
     }
 
     void SetupEnemyHurtbox()
@@ -42,30 +52,38 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
         _spriteRenderer = _sprite.GetComponent<SpriteRenderer>();
         _defaultColor = _spriteRenderer.color;
         _corpseSprite.SetActive(false);
-        _attributes = GetComponentInParent<CharacterAttributes>();
+        _eatenSprite.SetActive(false);
+        _attributes = GetComponentInParent<CharacterAttributes>();        
     }
 
     public void TakeHurt(int incomingDamage)
     {
-        _damageToTake = incomingDamage - _attributes.Armor;
-        if (_damageToTake < 1)
+        if (!_isEaten && !_isCorpse)
         {
-            IsArmorTooMuch = true;
+            _damageToTake = incomingDamage - _attributes.Armor;
+            if (_damageToTake < 1)
+            {
+                IsArmorTooMuch = true;
 
-            ToggleHitColorOn(true);
-            _damageToTake = 0;
+                ToggleHitColorOn(true);
+                _damageToTake = 0;
+            }
+            else
+            {
+                IsRecoiling = true;
+                _attributes.CurrentHealth -= _damageToTake;
+                ToggleHitColorOn(true);
+
+                if (_attributes.CurrentHealth <= 0)
+                {
+                    _attributes.CurrentHealth = 0;
+                    ToggleCorpse();
+                }
+            }
         }
         else
         {
-            IsRecoiling = true;
-            _attributes.CurrentHealth -= _damageToTake;
-            ToggleHitColorOn(true);
-
-            if (_attributes.CurrentHealth <= 0)
-            {
-                _attributes.CurrentHealth = 0;
-                IsDead = true;
-            }
+            ToggleEaten();
         }
     }
 
@@ -87,18 +105,19 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
         set => _isArmorTooMuch = value;
     }
 
-    public int DamageTaken
-    {
-        get => _damageToTake;
-    }
-
     public bool IsCorpse
     {
         get => _isCorpse;
     }
+
     public bool IsEaten
     {
         get => _isEaten;
+    }
+
+    public int DamageTaken
+    {
+        get => _damageToTake;
     }
 
     public int GivePoints
@@ -110,16 +129,12 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
     {
         if (isInHitState)
         {
-            _spriteRenderer.color = (IsArmorTooMuch)? Color.grey : Color.red;
+            _spriteRenderer.color = (IsArmorTooMuch) ? Color.grey : Color.red;
         }
         else
         {
             _spriteRenderer.color = _defaultColor;
         }
     }
-
-    public void ToggleEaten()
-    {
-
-    }
 }
+

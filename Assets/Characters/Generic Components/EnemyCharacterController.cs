@@ -50,11 +50,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     }
     void Update()
     {
-        if (_hurtbox.IsDead)
-        {
-            _hurtbox.ToggleCorpse();
-        }
-        else
+        if (!_hurtbox.IsDead)
         {
             UpdateEnemyCharacter();
         }        
@@ -244,5 +240,16 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         }
         ChangeState(stateToChangeTo);
         CharacterStateEngine();
+    }
+
+    public bool IsSpecial
+    {
+        get => _isAttacking;
+        set => _isAttacking = value;
+    }
+
+    public void RecievePower(int points)
+    {
+        _attributes.PointsOfPower += points;
     }
 }
