@@ -19,6 +19,8 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
     SpriteRenderer _spriteRenderer;
     Color _defaultColor;
 
+    public GameObject HealthBar;
+
 
     private void Awake()
     {
@@ -66,6 +68,13 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
                 _attributes.CurrentHealth = 0;
                 IsDead = true;
             }
+
+            print("Current: " + _attributes.CurrentHealth);
+            print("Max: " + _attributes.MaxHealth);
+            float healthPercent = (float)_attributes.CurrentHealth / (float)_attributes.MaxHealth;
+            print(healthPercent);
+            Vector3 healthPercentVector = new Vector3(healthPercent, 1,1);
+            HealthBar.transform.localScale = healthPercentVector;
         }
     }
 

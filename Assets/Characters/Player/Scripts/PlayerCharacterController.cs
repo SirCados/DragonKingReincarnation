@@ -23,7 +23,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
     HurtState _hurtState;
     ClawingState _clawingState;
     BitingState _bitingState;
-    ArmoredState _armoredState;
+    ArmoredState _armoredState;    
 
     bool _isAttacking = false;
     bool _isBiting = false;
@@ -194,7 +194,6 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         _animator.SetBool("isRecovering", false);
 
         _animator.SetBool("isHurt", true);
-        print("damage taken: " + _hurtbox.DamageTaken);
         StartCoroutine(ProcessTimedState((.5f), _idleState));
     }
 
