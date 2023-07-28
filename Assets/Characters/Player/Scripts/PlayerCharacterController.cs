@@ -27,6 +27,7 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
 
     bool _isAttacking = false;
     bool _isBiting = false;
+    public bool IsDead;
 
     void Start()
     {
@@ -61,6 +62,10 @@ public class PlayerCharacterController : CharacterStateController, IAttacker
         {
             UpdatePlayerCharacter();
             OnBite();
+        }
+        else
+        {
+            IsDead = true;
         }
     }
 

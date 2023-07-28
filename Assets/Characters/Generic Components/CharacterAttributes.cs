@@ -26,7 +26,6 @@ public class CharacterAttributes : MonoBehaviour
         {
             CurrentHealth = MaxHealth;
         }
-    }
-
+    }    
 
 }
