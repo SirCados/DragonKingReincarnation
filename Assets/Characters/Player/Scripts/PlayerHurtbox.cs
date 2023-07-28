@@ -67,6 +67,7 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
             {
                 _attributes.CurrentHealth = 0;
                 IsDead = true;
+                ToggleCorpse();
             }
 
             print("Current: " + _attributes.CurrentHealth);

@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackSpeed: 0.3
-  MovementSpeed: 4
+  MovementSpeed: 3
   Armor: 0
   AttackDamage: 0
   CurrentHealth: 0
