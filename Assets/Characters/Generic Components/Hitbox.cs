@@ -26,8 +26,26 @@ public class Hitbox : MonoBehaviour
     {
         if (hurtbox.CompareTag(_willHit) && !HasAttackHit)
         {
+            if (hurtbox.CompareTag("EnemyHitbox"))
+            {
+                print("HIT!");
+            }
             IHurtbox hurtboxToHit = hurtbox.GetComponent<IHurtbox>();
-            hurtboxToHit.TakeHurt(_attacker.GetAttackDamage());
+            if (_attacker.IsSpecial)
+            {                
+                if (hurtboxToHit.IsCorpse && !hurtboxToHit.IsEaten)
+                {
+                    print("om nom nom");
+                    _attacker.RecievePower(hurtboxToHit.GivePoints);
+                }
+                hurtboxToHit.TakeHurt(_attacker.GetAttackDamage(), _attacker.IsSpecial);
+
+            }
+            else
+            {
+                hurtboxToHit.TakeHurt(_attacker.GetAttackDamage(), _attacker.IsSpecial);
+            }
+            
             HasAttackHit = true;
         }
     }

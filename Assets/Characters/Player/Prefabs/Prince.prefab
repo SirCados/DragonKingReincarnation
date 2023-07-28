@@ -82,7 +82,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 1
 --- !u!1 &1535210854322104634
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535210854322104634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -150,7 +150,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.2}
-  m_Size: {x: 1.2, y: 2.1}
+  m_Size: {x: 0.4, y: 0.8}
   m_Direction: 0
 --- !u!114 &4811098877371328700
 MonoBehaviour:
@@ -164,8 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7d866c5f0de8f4c89db46932ad27b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _corpseSprite: {fileID: 0}
-  _enemySprite: {fileID: 0}
+  _corpseSprite: {fileID: 6882077624679800915}
+  _sprite: {fileID: 8583902998632446334}
+  _eatenSprite: {fileID: 6882077624679800915}
+  HealthBar: {fileID: 0}
 --- !u!50 &4260353927089072410
 Rigidbody2D:
   serializedVersion: 4
@@ -235,12 +237,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2197200177176366828}
   - component: {fileID: 3854620493654950883}
-  - component: {fileID: 1587991336790241261}
+  - component: {fileID: 6146801859902659980}
   - component: {fileID: 6556111716075783305}
-  - component: {fileID: 3022683175766768871}
   m_Layer: 0
   m_Name: Prince
-  m_TagString: PlayerHurtbox
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,7 +296,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1587991336790241261
+--- !u!114 &6146801859902659980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,8 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f834dc6549403cf42a9b6db0c8ea1a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDead: 0
   StateTracker: 
+  IsDead: 0
 --- !u!114 &6556111716075783305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,33 +322,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71435e3911b536845bc7368abcad7390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 0.5
+  AttackSpeed: 0.65
   MovementSpeed: 20
-  Armor: 0
-  AttackDamage: 5
+  Armor: 1
+  AttackDamage: 2
   CurrentHealth: 1
-  MaxHealth: 10
---- !u!95 &3022683175766768871
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4017087962373546835}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e96496845e80f1241942f36e33653eb7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  MaxHealth: 50
+  PointsOfPower: 0
 --- !u!1 &5213609295045829026
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +398,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -501,7 +482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3340575150800895008
 Transform:
   m_ObjectHideFlags: 0
@@ -558,7 +539,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 1046034456, guid: 56be0c12788f75b4896f340f00f4ed95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -595,7 +576,7 @@ Transform:
   m_GameObject: {fileID: 7090216043468691692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8031562738052339641}
@@ -641,7 +622,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9811321, g: 0.96724814, b: 0.96724814, a: 0.078431375}
   m_FlipX: 0
@@ -663,6 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5384581496667648835}
   - component: {fileID: 6584389003713711794}
+  - component: {fileID: 910368247664729427}
   m_Layer: 0
   m_Name: PrinceSprite
   m_TagString: Untagged
@@ -679,7 +661,7 @@ Transform:
   m_GameObject: {fileID: 8583902998632446334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2197200177176366828}
@@ -737,3 +719,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &910368247664729427
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583902998632446334}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e96496845e80f1241942f36e33653eb7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

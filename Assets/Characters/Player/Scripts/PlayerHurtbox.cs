@@ -7,13 +7,19 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
     bool _isRecoiling = false;
     bool _isArmorTooMuch = false;
     int _damageToTake;
+    bool _isCorpse = false;
+    bool _isEaten = false;
     CharacterAttributes _attributes;
 
     [SerializeField] GameObject _corpseSprite;
     [SerializeField] GameObject _sprite;
 
+    [SerializeField] GameObject _eatenSprite;
+
     SpriteRenderer _spriteRenderer;
     Color _defaultColor;
+
+    public GameObject HealthBar;
 
 
     private void Awake()
@@ -41,7 +47,7 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
         _attributes = GetComponentInParent<CharacterAttributes>();
     }
 
-    public void TakeHurt(int incomingDamage)
+    public void TakeHurt(int incomingDamage, bool isSpecial)
     {
         _damageToTake = incomingDamage - _attributes.Armor;
         if (_damageToTake < 1)
@@ -61,7 +67,15 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
             {
                 _attributes.CurrentHealth = 0;
                 IsDead = true;
+                ToggleCorpse();
             }
+
+            print("Current: " + _attributes.CurrentHealth);
+            print("Max: " + _attributes.MaxHealth);
+            float healthPercent = (float)_attributes.CurrentHealth / (float)_attributes.MaxHealth;
+            print(healthPercent);
+            Vector3 healthPercentVector = new Vector3(healthPercent, 1,1);
+            HealthBar.transform.localScale = healthPercentVector;
         }
     }
 
@@ -88,6 +102,20 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
         get => _damageToTake;
     }
 
+    public bool IsCorpse
+    {
+        get => _isCorpse;
+    }
+    public bool IsEaten
+    {
+        get => _isEaten;
+    }
+
+    public int GivePoints
+    {
+        get => _attributes.PointsOfPower;
+    }
+
     public void ToggleHitColorOn(bool isInHitState)
     {
         if (isInHitState)
@@ -98,5 +126,10 @@ public class PlayerHurtbox : MonoBehaviour, IHurtbox
         {
             _spriteRenderer.color = _defaultColor;
         }
+    }
+
+    public void ToggleEaten()
+    {
+
     }
 }

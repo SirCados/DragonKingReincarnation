@@ -10,7 +10,7 @@ public class AttackState : State
     float _passedTime = 0;
     
     public AttackState(Hitbox hitbox, float timeAttackIsActive, RecoveryState recoveryState)
-    {
+    {        
         _hitbox = hitbox;
         _timeAttackIsActive = timeAttackIsActive;
         NextState = recoveryState;
