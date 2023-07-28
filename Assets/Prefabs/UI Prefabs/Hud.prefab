@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6682094668613505730}
   - component: {fileID: 1597046254963338313}
   m_Layer: 0
-  m_Name: Food indicator lower-right
+  m_Name: Food Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,8 +699,9 @@ GameObject:
   - component: {fileID: 6772536666944779150}
   - component: {fileID: 8643228294712208343}
   - component: {fileID: 7885001557367997612}
+  - component: {fileID: 7428963541825983513}
   m_Layer: 0
-  m_Name: Current Food
+  m_Name: Food Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -823,6 +824,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7428963541825983513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5783326664723670426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7c90b36e9074c4ea0526300f29af1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5996255139379771980
 GameObject:
   m_ObjectHideFlags: 0
