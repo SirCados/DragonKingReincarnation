@@ -6,5 +6,5 @@ public interface IHurtbox
     int DamageTaken { get; }
     void TakeHurt(int damageToTake);
     void ToggleCorpse();
-    void ToggleArmorColorOn(bool isArmorTooMuch);
+    void ToggleHitColorOn(bool isInHitState);
 }

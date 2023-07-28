@@ -46,8 +46,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
         _armoredState = new ArmoredState();
 
-
-
         ChangeState(_idleState);
     }
     void Update()
@@ -59,8 +57,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         else
         {
             UpdateEnemyCharacter();
-        }
-        
+        }        
     }
 
     void UpdateEnemyCharacter()
@@ -86,7 +83,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         //TODO: need to switch to IsInputBlockedExternally || _isInputBlockedInternally, checking this way is untenable
         if (_currentState != _hurtState && _currentState != _armoredState)
         {
-            print("looking " + _currentState);
             CheckForTarget();
         }
         StateTracker = _currentState.ToString();
@@ -188,7 +184,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         _animator.SetBool("isRecovering", false);
 
         _animator.SetBool("isHurt", true);
-        print("damage taken: " + _hurtbox.DamageTaken);
         StartCoroutine(ProcessTimedState((.5f), _idleState));
     }
 
@@ -204,7 +199,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         _animator.SetBool("isHurt", true);
         _animator.SetBool("isHurt", false);
         _animator.SetBool("isIdle", true);
-        print("ARMOR!");
         StartCoroutine(ProcessTimedState((.1f), _idleState));
     }
 
@@ -227,11 +221,11 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     {
         float targetDirectionX = targetPosition.x - transform.position.x;
         float targetDirectionY = targetPosition.y - transform.position.y;
-        Vector3 movementVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
-        Vector3 movement = movementVector * _attributes.MovementSpeed * Time.deltaTime;
+        Vector3 directionVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
+        Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
 
-        _animator.SetFloat("xDirection", movementVector.x);
-        _animator.SetFloat("yDirection", movementVector.y);
+        _animator.SetFloat("xDirection", directionVector.x);
+        _animator.SetFloat("yDirection", directionVector.y);
         transform.Translate(movement);
     }
 
@@ -244,9 +238,9 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     {   
         //TODO: Add to state controller class when adding state machine to it
         yield return new WaitForSeconds(time); 
-        if(_currentState == _armoredState)
+        if(_currentState == _armoredState || _currentState == _hurtState)
         {
-            _hurtbox.ToggleArmorColorOn(false);
+            _hurtbox.ToggleHitColorOn(false);
         }
         ChangeState(stateToChangeTo);
         CharacterStateEngine();
