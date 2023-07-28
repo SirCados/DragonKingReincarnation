@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyCharacterController : CharacterStateController, IAttacker, IMobileEnemy
 {
     public string StateTracker;
+    public bool IsRabbit = false;
+    public bool IsFearless = false;
 
     Animator _animator;
     CharacterAttributes _attributes;
@@ -50,11 +52,7 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
     }
     void Update()
     {
-        if (_hurtbox.IsDead)
-        {
-            _hurtbox.ToggleCorpse();
-        }
-        else
+        if (!_hurtbox.IsDead)
         {
             UpdateEnemyCharacter();
         }        
@@ -74,6 +72,15 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
             _hurtbox.IsArmorTooMuch = false;
             ChangeState(_armoredState);
             CharacterStateEngine();
+        }
+
+        if(_attributes.CurrentHealth <= (_attributes.MaxHealth / 2) && !IsFearless)
+        {
+            IsRabbit = true;
+            if(_attributes.MovementSpeed > 6)
+            {
+                _attributes.MovementSpeed = 6;
+            }
         }
 
         if (_currentState == _idleState || _currentState == _chaseState)
@@ -98,8 +105,6 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
                 BeIdle();
                 break;
             case ChaseState:
-                _animator.SetBool("isIdle", false);
-                _animator.SetBool("isWalking", true);
                 MoveToTarget(_targetDectector.TargetPosition);
                 break;
             case WindupState:
@@ -136,6 +141,10 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
             {
                 ChangeState(_chaseState);
             }
+        } else if (!_targetDectector.IsDetecting)
+        {
+            ChangeState(_idleState);
+            CharacterStateEngine();
         }
 
         if (_currentState == _chaseState)
@@ -219,9 +228,15 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
 
     public void MoveToTarget(Vector3 targetPosition)
     {
+        _animator.SetBool("isIdle", false);
+        _animator.SetBool("isWalking", true);
         float targetDirectionX = targetPosition.x - transform.position.x;
         float targetDirectionY = targetPosition.y - transform.position.y;
         Vector3 directionVector = new Vector3(targetDirectionX, targetDirectionY, 0).normalized;
+        if (IsRabbit)
+        {
+            directionVector = -directionVector;
+        }
         Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
 
         _animator.SetFloat("xDirection", directionVector.x);
@@ -244,5 +259,16 @@ public class EnemyCharacterController : CharacterStateController, IAttacker, IMo
         }
         ChangeState(stateToChangeTo);
         CharacterStateEngine();
+    }
+
+    public bool IsSpecial
+    {
+        get => _isAttacking;
+        set => _isAttacking = value;
+    }
+
+    public void RecievePower(int points)
+    {
+        _attributes.PointsOfPower += points;
     }
 }
