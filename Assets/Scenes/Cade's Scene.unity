@@ -452,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6556111716075783305, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
       propertyPath: AttackSpeed
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6556111716075783305, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
       propertyPath: AttackDamage
@@ -460,6 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1587991336790241261, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
+    - {fileID: 3022683175766768871, guid: 6bd3d197d7842a646a09d4f107f67f85, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

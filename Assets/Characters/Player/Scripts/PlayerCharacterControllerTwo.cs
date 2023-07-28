@@ -83,6 +83,10 @@ public class PlayerCharacterControllerTwo : CharacterStateController, IAttacker
         {
             _isAttacking = false;
         }
+        if (_currentState == _moveState)
+        {
+            CharacterStateEngine();
+        }
         StateTracker = _currentState.ToString();
     }
 
@@ -149,6 +153,7 @@ public class PlayerCharacterControllerTwo : CharacterStateController, IAttacker
         _animator.SetBool("isRecovering", true);
         if (_storedMovementVector != Vector2.zero)
         {
+            _animator.SetBool("isIdle", true);
             StartCoroutine(ProcessTimedState(_attributes.AttackSpeed, _moveState));
         }
         else
@@ -185,7 +190,6 @@ public class PlayerCharacterControllerTwo : CharacterStateController, IAttacker
         _animator.SetBool("isHurt", true);
         _animator.SetBool("isHurt", false);
         _animator.SetBool("isIdle", true);
-        print("ARMOR!");
         StartCoroutine(ProcessTimedState((.1f), _idleState));
     }
 
@@ -222,11 +226,11 @@ public class PlayerCharacterControllerTwo : CharacterStateController, IAttacker
         {
             _movementVector = _storedMovementVector;
             _storedMovementVector = Vector2.zero;
-            print("stored");
         }
 
         if (_movementVector != Vector2.zero)
         {
+            _animator.SetBool("isRecovering", false);
             _animator.SetBool("isIdle", false);
             _animator.SetBool("isWalking", true);
             Vector3 directionVector = new Vector3(_movementVector.x, _movementVector.y, 0);
@@ -239,6 +243,7 @@ public class PlayerCharacterControllerTwo : CharacterStateController, IAttacker
         }
         else
         {
+            _animator.SetBool("isRecovering", false);
             _animator.SetBool("isWalking", false);
             _animator.SetBool("isIdle", true);
             ChangeState(_idleState);
@@ -273,10 +278,3 @@ public class PlayerCharacterControllerTwo : CharacterStateController, IAttacker
         CharacterStateEngine();
     }
 }
-
-/*
- 
-   
-
- */
-
