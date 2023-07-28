@@ -4,6 +4,8 @@ public abstract class State
 
     public State NextState;
 
+    public bool IsNewState = false;
+
     public virtual void OnEnterState() { }
 
     public virtual void OnExitState() { }

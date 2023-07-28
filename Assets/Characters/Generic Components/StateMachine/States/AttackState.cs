@@ -3,11 +3,12 @@ using System.Collections;
 
 public class AttackState : State
 {
+    public bool HasAttackHit;
+
     Hitbox _hitbox;
     float _timeAttackIsActive;
     float _passedTime = 0;
-
-
+    
     public AttackState(Hitbox hitbox, float timeAttackIsActive, RecoveryState recoveryState)
     {
         _hitbox = hitbox;
@@ -17,29 +18,12 @@ public class AttackState : State
 
     public override void OnEnterState()
     {
-        
         _hitbox.gameObject.SetActive(true);
     }
-
-    public override void OnUpdate()
-    {
-        _passedTime += Time.deltaTime;
-        Debug.Log("attackState");
-        if (_passedTime >= _timeAttackIsActive)
-        {            
-            ShouldStateChange = true;
-        }
-    }
+ 
 
     public override void OnExitState()
     {
         _hitbox.gameObject.SetActive(false);
-        ShouldStateChange = false;
-        _passedTime = 0;
-    }
-
-    IEnumerator AttackTime()
-    {
-        yield return new WaitForSeconds(_timeAttackIsActive);
     }
 }

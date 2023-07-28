@@ -1,74 +1,101 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCharacterController : CharacterStateController, IAttacker, IHurtbox
-{    
-    public bool IsDead = false;    
+public class PlayerCharacterController : CharacterStateController, IAttacker
+{
+    public bool IsDead = false;
+    public string StateTracker;
 
-    AttackState _attackState;
+    bool _isAttacking = false;
+    Animator _animator;
     CharacterAttributes _attributes;
+    Hitbox _hitbox;
+    Vector2 _movementVector; //Input from Player Inputs component. Look for OnMove function in this script
+    Vector2 _storedMovementVector; //Input from Player Inputs component if not in a moving state. Look for OnMove function in this script
+
+    //States
+    AttackState _attackState;
     RecoveryState _attackRecoveryState;
     IdleState _idleState;
     PlayerMoveState _moveState;
     HurtState _hurtState;
+    WindupState _windupState;
 
-    Hitbox _hitbox;
-    GameObject _hitboxPivot;
-
-    float _passedTime = 0;
-
-    bool _isInputBlockedInternally = false;
-    Vector2 _movementVector; //Input from Player Inputs component. Look for OnMove function in this script
-    Vector2 _storedMovementVector; //Input from Player Inputs component if not in a moving state. Look for OnMove function in this script
-
-    private void Start()
+    void Start()
     {
-        SetupPlayerCharacterController();
+        SetupEnemyCharacterController();
     }
-    void SetupPlayerCharacterController()
-    {
-        _attributes = GetComponent<CharacterAttributes>();
-        _hitboxPivot = GameObject.Find("PlayerHitboxPivot");
-        _hitbox = _hitboxPivot.GetComponentInChildren<Hitbox>();
-        _hitbox.gameObject.SetActive(false);
 
-        _moveState = new PlayerMoveState();
+    void SetupEnemyCharacterController()
+    {
+        _animator = GetComponentInChildren<Animator>();
+        _attributes = GetComponent<CharacterAttributes>();
+        _hitbox = GetComponentInChildren<Hitbox>();
+        _hitbox.gameObject.SetActive(false);
         _idleState = new IdleState();
+        _moveState = new PlayerMoveState();
         _hurtState = new HurtState();
+        _windupState = new WindupState();
         _attackRecoveryState = new RecoveryState();
         _attackState = new AttackState(_hitbox, .1f, _attackRecoveryState);
 
         ChangeState(_idleState);
     }
-
-    // Update is called once per frame
     void Update()
     {
-        ProcessInput();
+        if (_currentState == _idleState || _currentState == _moveState)
+        {
+            _isAttacking = false;
+            CharacterStateEngine();
+        }
+        StateTracker = _currentState.ToString();
+    }
+
+    void CharacterStateEngine()
+    {
+        //could I use delegates in constructor of states once all of my states are determined?
+        switch (_currentState)
+        {
+            case IdleState:
+                _animator.SetBool("isRecovering", false);
+                _animator.SetBool("isWalking", false);
+                _animator.SetBool("isIdle", true);
+                break;
+            case PlayerMoveState:
+                _animator.SetBool("isIdle", false);
+                _animator.SetBool("isWalking", true);
+                MovePlayer();
+                break;
+            case WindupState:
+                Windup();
+                break;
+            case AttackState:
+                Attack();
+                break;
+            case RecoveryState:
+                Recover();
+                break;
+            case HurtState:
+                break;
+        }
+
         StateControllerUpdate();
     }
 
-    //From Player Input component. Captures input from specific key bindings
-    //To see bindings check "Characters\Player\Player Inputs\DragonKingReincarnation"
     void OnMove(InputValue movementValue)
     {
-        if (_currentState != _moveState || _currentState != _idleState)
+        if (_currentState == _hurtState || _isAttacking)
         {
             _movementVector = Vector2.zero;
             _storedMovementVector = movementValue.Get<Vector2>();
         }
-        else
+        else if (!_isAttacking)
         {
             _storedMovementVector = Vector2.zero;
             _movementVector = movementValue.Get<Vector2>();
-        }
-    }
-
-    void ProcessInput()
-    {
-        if (_currentState != _attackState || _currentState == _attackRecoveryState)
-        {
-            MovePlayer();
+            ChangeState(_moveState);
+            CharacterStateEngine();
         }
     }
 
@@ -82,14 +109,9 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
 
         if (_movementVector != Vector2.zero)
         {
-            ChangeState(_moveState);
-
             Vector3 directionVector = new Vector3(_movementVector.x, _movementVector.y, 0).normalized;
-            Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;
-
+            Vector3 movement = directionVector * _attributes.MovementSpeed * Time.deltaTime;            
             transform.Translate(movement);
-
-            //_characterController.Move(movement * _attributes.MovementSpeed * Time.deltaTime);
         }
         else
         {
@@ -97,33 +119,43 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         }
     }
 
-    void HandleAttackSpeed()
+    void OnFire()
     {
-        _passedTime += Time.deltaTime;
-        Debug.Log(" recoveryState");
-        if (_passedTime >= _attributes.AttackSpeed)
+        if (!_isAttacking)
         {
-            Debug.Log("should be over");
-            ChangeState(_idleState);
+            _isAttacking = true;
+            _storedMovementVector = _movementVector;
+            ChangeState(_windupState);
+            CharacterStateEngine();
         }
     }
 
-    //From Player Input component. Captures input from specific key bindings
-    //To see bindings check "Characters\Player\Player Inputs\DragonKingReincarnation"
-    void OnFire()
+    public void Windup()
     {
-        BeginAttack();
+        _animator.SetBool("isWalking", false);
+        _animator.SetBool("isWindup", true);
+        StartCoroutine(ProcessAttack(_attributes.AttackSpeed / 2, _attackState));
     }
 
-    //-- IAttacker functions --//
-    public void BeginAttack()
+    public void Attack()
     {
-        ChangeState(_attackState);
+        _animator.SetBool("isWindup", false);
+        _animator.SetBool("isAttacking", true);
+        StartCoroutine(ProcessAttack(.2f, _attackRecoveryState));
     }
 
-    public void SpawnProjectile(GameObject projectileToSpawn)
+    public void Recover()
     {
-        //No projectiles to spawn yet.
+        _animator.SetBool("isAttacking", false);
+        _animator.SetBool("isRecovering", true);
+        if (_storedMovementVector != Vector2.zero)
+        {
+            StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _moveState));
+        }
+        else
+        {
+            StartCoroutine(ProcessAttack(_attributes.AttackSpeed, _idleState));
+        }
     }
 
     public int GetAttackDamage()
@@ -131,21 +163,15 @@ public class PlayerCharacterController : CharacterStateController, IAttacker, IH
         return _attributes.AttackDamage;
     }
 
-    public void TakeHurt(int damageToTake)
+    public void SpawnProjectile(GameObject projectileToSpawn)
     {
-        print("ow!");
+        throw new System.NotImplementedException();
     }
-    //-- IAttacker functions --//
 
-    /*
-     follow mouse cursor?
-
-    Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
-     */
+    IEnumerator ProcessAttack(float time, State stateToChangeTo)
+    {
+        yield return new WaitForSeconds(time);
+        ChangeState(stateToChangeTo);
+        CharacterStateEngine();
+    }
 }

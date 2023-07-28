@@ -4,7 +4,7 @@ public class Hitbox : MonoBehaviour
 {
     public IAttacker _attacker;
 
-    string _target;
+    [SerializeField] string _willHit;
     public bool HasAttackHit = false;  
 
     private void Awake()
@@ -24,7 +24,7 @@ public class Hitbox : MonoBehaviour
 
     public void GiveHitTo(Collider2D hurtbox)
     {
-        if (hurtbox.CompareTag(_target) && !HasAttackHit)
+        if (hurtbox.CompareTag(_willHit) && !HasAttackHit)
         {
             IHurtbox hurtboxToHit = hurtbox.GetComponent<IHurtbox>();
             hurtboxToHit.TakeHurt(_attacker.GetAttackDamage());
@@ -36,11 +36,11 @@ public class Hitbox : MonoBehaviour
     {
         if (gameObject.CompareTag("PlayerHitbox"))
         {
-            _target = "EnemyHurtbox";
+            _willHit = "EnemyHurtbox";
         }
         else if (gameObject.CompareTag("EnemyHitbox"))
         {
-            _target = "PlayerHurtbox";
+            _willHit = "PlayerHurtbox";
         }
     }
 

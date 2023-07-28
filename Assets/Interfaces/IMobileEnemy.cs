@@ -6,8 +6,6 @@ public interface IMobileEnemy
 
     public void LookForTarget(Vector3 lastPositionOfTarget);
 
-    public void RotatePivot(Vector3 movementVector);
-
     public void BeIdle();
 
     public void GoToSleep();
