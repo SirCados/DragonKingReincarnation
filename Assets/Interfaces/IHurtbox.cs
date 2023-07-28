@@ -7,7 +7,7 @@ public interface IHurtbox
     bool IsEaten { get; }
     int DamageTaken { get; }
     int GivePoints { get;}
-    void TakeHurt(int damageToTake);
+    void TakeHurt(int damageToTake, bool isSpecial);
     void ToggleCorpse();
     void ToggleEaten();
     void ToggleHitColorOn(bool isInHitState);
